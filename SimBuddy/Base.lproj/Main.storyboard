@@ -685,7 +685,7 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                    <window key="window" title="SimBuddy" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="__MainWindow" animationBehavior="default" tabbingMode="disallowed" titlebarAppearsTransparent="YES" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
@@ -710,9 +710,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D2H-WL-agj">
+                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="D2H-WL-agj">
                                 <rect key="frame" x="17" y="226" width="447" height="25"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="11f-SI-DOm" id="CXf-O9-aNK">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
@@ -725,9 +724,8 @@
                                     </menu>
                                 </popUpButtonCell>
                             </popUpButton>
-                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HFd-J7-wSq">
+                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HFd-J7-wSq">
                                 <rect key="frame" x="17" y="196" width="447" height="25"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="44T-9H-5mz" id="v8a-td-jB4">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
@@ -740,10 +738,52 @@
                                     </menu>
                                 </popUpButtonCell>
                             </popUpButton>
+                            <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d0J-AC-6lf">
+                                <rect key="frame" x="20" y="152" width="440" height="40"/>
+                                <subviews>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sdW-ds-cig">
+                                        <rect key="frame" x="-2" y="24" width="85" height="16"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Bundle Name" id="wbb-xN-xIi">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="b6d-iS-Gej">
+                                        <rect key="frame" x="-2" y="0.0" width="104" height="16"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Bundle Identifier" id="b45-wo-cGR">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
                         </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="d0J-AC-6lf" secondAttribute="trailing" constant="20" symbolic="YES" id="0Ma-0p-B1b"/>
+                            <constraint firstItem="d0J-AC-6lf" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="2Rq-Bh-Vr4"/>
+                            <constraint firstAttribute="trailing" secondItem="D2H-WL-agj" secondAttribute="trailing" constant="20" symbolic="YES" id="63F-O3-UOc"/>
+                            <constraint firstItem="D2H-WL-agj" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="Sds-C5-SmI"/>
+                            <constraint firstAttribute="trailing" secondItem="HFd-J7-wSq" secondAttribute="trailing" constant="20" symbolic="YES" id="X6F-h5-cCZ"/>
+                            <constraint firstItem="D2H-WL-agj" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" symbolic="YES" id="eeA-rC-iYa"/>
+                            <constraint firstItem="HFd-J7-wSq" firstAttribute="top" secondItem="D2H-WL-agj" secondAttribute="bottom" constant="10" symbolic="YES" id="v4T-Nh-J1U"/>
+                            <constraint firstItem="HFd-J7-wSq" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="vIy-Rh-F5i"/>
+                            <constraint firstItem="d0J-AC-6lf" firstAttribute="top" secondItem="HFd-J7-wSq" secondAttribute="bottom" constant="8" symbolic="YES" id="xze-jH-Xz1"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="applicationPopUpButton" destination="HFd-J7-wSq" id="a2y-zm-QPT"/>
+                        <outlet property="bundleIdentifierTextField" destination="b6d-iS-Gej" id="1vE-oL-dGB"/>
+                        <outlet property="bundleNameTextField" destination="sdW-ds-cig" id="wXp-zk-W1F"/>
                         <outlet property="devicePopUpButton" destination="D2H-WL-agj" id="abT-aX-XMg"/>
                     </connections>
                 </viewController>

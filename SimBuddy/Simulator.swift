@@ -56,6 +56,12 @@ struct DeviceInfo {
 	let dataPath: String	// dataPath
 	let isBooted: Bool		// state == "Booted"
 	let udid: String		// udid
+	
+	var uniqueIdentifier: String {
+		get {
+			udid
+		}
+	}
 }
 
 /*
@@ -121,17 +127,29 @@ struct DeviceInfo {
 struct ApplicationInfo {
 	let name: String				// CFBundleDisplayName
 	let type: String				// ApplicationType
-	let bundlePath: String			// Path
+	let bundleURL: URL				// Bundle
 	let bundleIdentifier: String	// CFBundleIdentifier
 	let bundleName: String			// CFBundleName
-	let dataPath: String			// DataContainer
+	let dataURL: URL				// DataContainer
 	
 	let groupContainers: [GroupContainerInfo]
+	
+	var uniqueIdentifier: String {
+		get {
+			bundleIdentifier
+		}
+	}
 }
 
 struct GroupContainerInfo {
 	let identifier: String			// key
-	let path: String				// value
+	let containerURL: URL			// value
+	
+	var uniqueIdentifier: String {
+		get {
+			identifier
+		}
+	}
 }
 
 class Simulator {
@@ -153,10 +171,18 @@ class Simulator {
 					for item in root {
 						if let application = item.value as? Dictionary<String, Any> {
 							if let name = application["CFBundleDisplayName"] as? String,
-							   let type = application["ApplicationType"] as? String
+							   let type = application["ApplicationType"] as? String,
+							   let bundlePath = application["Bundle"] as? String,
+							   let bundleIdentifier = application["CFBundleIdentifier"] as? String,
+							   let bundleName = application["CFBundleName"] as? String,
+							   let dataPath = application["DataContainer"] as? String
 							{
-								let applicationInfo = ApplicationInfo(name: name, type: type, bundlePath: "", bundleIdentifier: "", bundleName: "", dataPath: "", groupContainers: [])
-								result.append(applicationInfo)
+								if let bundleURL = URL(string: bundlePath),
+								   let dataURL = URL(string: dataPath)
+								{
+									let applicationInfo = ApplicationInfo(name: name, type: type, bundleURL: bundleURL, bundleIdentifier: bundleIdentifier, bundleName: bundleName, dataURL: dataURL, groupContainers: [])
+									result.append(applicationInfo)
+								}
 							}
 						}
 					}
