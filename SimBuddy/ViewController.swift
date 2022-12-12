@@ -59,6 +59,7 @@ class ViewController: NSViewController {
 	func loadApplications() {
 		if devices.count > 0 {
 			Task {
+				// TODO: index can be out of range if a Simulator device is shut down
 				let selectedDeviceIdentifier = devices[selectedDeviceIndex].uniqueIdentifier
 				self.applications = await Simulator.applications(for: selectedDeviceIdentifier).sorted(by: { firstApplication, secondApplication in
 					firstApplication.name < secondApplication.name
@@ -111,6 +112,7 @@ class ViewController: NSViewController {
 		}
 		
 		if applications.count > 0 {
+			// TODO: index can be out of range if an application is removed
 			let selectedApplication = applications[selectedApplicationIndex]
 			bundleNameTextField.stringValue = selectedApplication.bundleName
 			bundleIdentifierTextField.stringValue = selectedApplication.bundleIdentifier
