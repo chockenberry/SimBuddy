@@ -180,7 +180,19 @@ class Simulator {
 								if let bundleURL = URL(string: bundlePath),
 								   let dataURL = URL(string: dataPath)
 								{
-									let applicationInfo = ApplicationInfo(name: name, type: type, bundleURL: bundleURL, bundleIdentifier: bundleIdentifier, bundleName: bundleName, dataURL: dataURL, groupContainers: [])
+									var groupContainers: [GroupContainerInfo] = []
+									if let containers = application["GroupContainers"] as? Dictionary<String, Any> {
+										for container in containers {
+											let identifier = container.key
+											if let containerPath = container.value as? String,
+											   let containerURL = URL(string: containerPath)
+											{
+												let groupContainerInfo = GroupContainerInfo(identifier: identifier, containerURL: containerURL)
+												groupContainers.append(groupContainerInfo)
+											}
+										}
+									}
+									let applicationInfo = ApplicationInfo(name: name, type: type, bundleURL: bundleURL, bundleIdentifier: bundleIdentifier, bundleName: bundleName, dataURL: dataURL, groupContainers: groupContainers)
 									result.append(applicationInfo)
 								}
 							}

@@ -767,14 +767,50 @@
                                     <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
                             </stackView>
+                            <stackView distribution="equalSpacing" orientation="horizontal" alignment="top" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JxL-hI-f8S">
+                                <rect key="frame" x="20" y="20" width="440" height="20"/>
+                                <subviews>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zje-qd-YkE">
+                                        <rect key="frame" x="-7" y="-7" width="113" height="32"/>
+                                        <buttonCell key="cell" type="push" title="Open Bundle" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cGp-wO-tUL">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="openBundle:" target="XfG-lQ-9wD" id="Xoj-ue-Z3X"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yc0-Xg-Uvb">
+                                        <rect key="frame" x="348" y="-7" width="99" height="32"/>
+                                        <buttonCell key="cell" type="push" title="Open Data" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="I9Y-gf-DFK">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="openData:" target="XfG-lQ-9wD" id="H4W-1y-INQ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="d0J-AC-6lf" secondAttribute="trailing" constant="20" symbolic="YES" id="0Ma-0p-B1b"/>
                             <constraint firstItem="d0J-AC-6lf" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="2Rq-Bh-Vr4"/>
                             <constraint firstAttribute="trailing" secondItem="D2H-WL-agj" secondAttribute="trailing" constant="20" symbolic="YES" id="63F-O3-UOc"/>
+                            <constraint firstAttribute="trailing" secondItem="JxL-hI-f8S" secondAttribute="trailing" constant="20" symbolic="YES" id="HD9-Fw-u41"/>
+                            <constraint firstAttribute="bottom" secondItem="JxL-hI-f8S" secondAttribute="bottom" constant="20" symbolic="YES" id="No9-1d-xGr"/>
                             <constraint firstItem="D2H-WL-agj" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="Sds-C5-SmI"/>
                             <constraint firstAttribute="trailing" secondItem="HFd-J7-wSq" secondAttribute="trailing" constant="20" symbolic="YES" id="X6F-h5-cCZ"/>
                             <constraint firstItem="D2H-WL-agj" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" symbolic="YES" id="eeA-rC-iYa"/>
+                            <constraint firstItem="JxL-hI-f8S" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="maz-iE-paX"/>
                             <constraint firstItem="HFd-J7-wSq" firstAttribute="top" secondItem="D2H-WL-agj" secondAttribute="bottom" constant="10" symbolic="YES" id="v4T-Nh-J1U"/>
                             <constraint firstItem="HFd-J7-wSq" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="vIy-Rh-F5i"/>
                             <constraint firstItem="d0J-AC-6lf" firstAttribute="top" secondItem="HFd-J7-wSq" secondAttribute="bottom" constant="8" symbolic="YES" id="xze-jH-Xz1"/>
@@ -785,6 +821,8 @@
                         <outlet property="bundleIdentifierTextField" destination="b6d-iS-Gej" id="1vE-oL-dGB"/>
                         <outlet property="bundleNameTextField" destination="sdW-ds-cig" id="wXp-zk-W1F"/>
                         <outlet property="devicePopUpButton" destination="D2H-WL-agj" id="abT-aX-XMg"/>
+                        <outlet property="openBundleButton" destination="zje-qd-YkE" id="sg4-cN-tci"/>
+                        <outlet property="openDataButton" destination="yc0-Xg-Uvb" id="UFf-r7-EsK"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
