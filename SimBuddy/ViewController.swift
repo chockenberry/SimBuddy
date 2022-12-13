@@ -22,9 +22,11 @@ class ViewController: NSViewController {
 
 	var selectedDeviceIndex: Int?
 	var selectedApplicationIndex: Int?
-	
+	var selectedGroupContainerIndex: Int?
+
 	let selectedDeviceIdentifierKey = "selectedDeviceIdentifier"
 	let selectedApplicationIdentifierKey = "selectedApplicationIdentifier"
+	let selectedGroupContainerIdentifierKey = "selectedGroupContainerIdentifier"
 
 	var devices: [DeviceInfo] = []
 	var applications: [ApplicationInfo] = []
@@ -88,17 +90,28 @@ class ViewController: NSViewController {
 				
 				if applications.count > 0 {
 					selectedApplicationIndex = 0
-
+					selectedGroupContainerIndex	= 0
+					
 					if let selectedApplicationIdentifier = UserDefaults.standard.string(forKey: selectedApplicationIdentifierKey) {
 						if let applicationIndex = applications.firstIndex(where: { applicationInfo in
 							applicationInfo.uniqueIdentifier == selectedApplicationIdentifier
 						}) {
 							selectedApplicationIndex = applicationIndex
 						}
+						
+						if let selectedGroupContainerIdentifier = UserDefaults.standard.string(forKey: selectedGroupContainerIdentifierKey) {
+							let application = applications[selectedApplicationIndex!]
+							if let groupContainerIndex = application.groupContainers.firstIndex(where: { groupContainerInfo in
+								groupContainerInfo.uniqueIdentifier == selectedGroupContainerIdentifier
+							}) {
+								selectedGroupContainerIndex = groupContainerIndex
+							}
+						}
 					}
 				}
 				else {
 					selectedApplicationIndex = nil
+					selectedGroupContainerIndex = nil
 				}
 				
 				updateView()
@@ -149,32 +162,66 @@ class ViewController: NSViewController {
 					menu.addItem(menuItem)
 				}
 			}
-			
 			applicationPopUpButton.menu = menu
+			
 			if let selectedApplicationIndex {
 				applicationPopUpButton.isEnabled = true
 				applicationPopUpButton.selectItem(at: selectedApplicationIndex)
+
+				let selectedApplication = applications[selectedApplicationIndex]
+				bundleNameTextField.stringValue = selectedApplication.bundleName
+				bundleIdentifierTextField.stringValue = selectedApplication.bundleIdentifier
+
+				do {
+					let menu = NSMenu(title: "GroupContainers")
+					if selectedApplication.groupContainers.count > 0 {
+						for (index, groupContainer) in selectedApplication.groupContainers.enumerated() {
+							let menuItem = NSMenuItem(title: groupContainer.identifier, action: #selector(selectGroupContainer), keyEquivalent: "")
+							menuItem.tag = index
+							menu.addItem(menuItem)
+						}
+					}
+					else {
+						let menuItem = NSMenuItem(title: "No Group Containers", action: nil, keyEquivalent: "")
+						menuItem.isEnabled = false
+						menu.addItem(menuItem)
+					}
+					groupContainersPopUpButton.menu = menu
+				}
+
+				if let selectedGroupContainerIndex {
+					groupContainersPopUpButton.isEnabled = true
+					groupContainersPopUpButton.selectItem(at: selectedGroupContainerIndex)
+				}
+				else {
+					groupContainersPopUpButton.isEnabled = false
+					groupContainersPopUpButton.selectItem(at: 0)
+				}
+				
+				openBundleButton.isEnabled = true
+				openDataButton.isEnabled = true
 			}
 			else {
 				applicationPopUpButton.isEnabled = false
 				applicationPopUpButton.selectItem(at: 0)
+
+				bundleNameTextField.stringValue = "No Application"
+				bundleIdentifierTextField.stringValue = "No Application"
+
+				do {
+					let menu = NSMenu(title: "GroupContainers")
+					let menuItem = NSMenuItem(title: "No Group Containers", action: nil, keyEquivalent: "")
+					menuItem.isEnabled = false
+					menu.addItem(menuItem)
+					groupContainersPopUpButton.menu = menu
+				}
+
+				groupContainersPopUpButton.isEnabled = false
+				groupContainersPopUpButton.selectItem(at: 0)
+
+				openBundleButton.isEnabled = false
+				openDataButton.isEnabled = false
 			}
-		}
-		
-		if let selectedApplicationIndex {
-			let selectedApplication = applications[selectedApplicationIndex]
-			bundleNameTextField.stringValue = selectedApplication.bundleName
-			bundleIdentifierTextField.stringValue = selectedApplication.bundleIdentifier
-
-			openBundleButton.isEnabled = true
-			openDataButton.isEnabled = true
-		}
-		else {
-			bundleNameTextField.stringValue = "N/A"
-			bundleIdentifierTextField.stringValue = "N/A"
-
-			openBundleButton.isEnabled = false
-			openDataButton.isEnabled = false
 		}
 	}
 	
@@ -205,6 +252,21 @@ class ViewController: NSViewController {
 	}
 
 	@IBAction
+	func selectGroupContainer(_ sender: Any) {
+		debugLog("sender = \(sender)")
+		if let menuItem = sender as? NSMenuItem {
+			let index = menuItem.tag
+			if let selectedApplicationIndex {
+				let selectedApplication = applications[selectedApplicationIndex]
+				let groupContainer = selectedApplication.groupContainers[index]
+				debugLog("index = \(index), containerURL = \(groupContainer.containerURL)")
+				UserDefaults.standard.set(groupContainer.uniqueIdentifier, forKey: selectedGroupContainerIdentifierKey)
+				selectedGroupContainerIndex = index
+			}
+		}
+	}
+
+	@IBAction
 	func openBundle(_ sender: Any) {
 		debugLog("sender = \(sender)")
 		if let selectedApplicationIndex {
@@ -225,6 +287,57 @@ class ViewController: NSViewController {
 		if let selectedApplicationIndex {
 			let selectedApplication = applications[selectedApplicationIndex]
 			NSWorkspace.shared.open(selectedApplication.dataURL)
+		}
+	}
+
+	@IBAction
+	func openDocuments(_ sender: Any) {
+		debugLog("sender = \(sender)")
+		if let selectedApplicationIndex {
+			let selectedApplication = applications[selectedApplicationIndex]
+			let documentsURL: URL
+			if #available(macOS 13.0, *) {
+				documentsURL = selectedApplication.dataURL.appending(path: "Documents", directoryHint: .isDirectory)
+			} else {
+				documentsURL = selectedApplication.dataURL.appendingPathComponent("Documents")
+			}
+			NSWorkspace.shared.open(documentsURL)
+		}
+	}
+
+	@IBAction
+	func openPreferences(_ sender: Any) {
+		debugLog("sender = \(sender)")
+		if let selectedApplicationIndex {
+			let selectedApplication = applications[selectedApplicationIndex]
+			let preferencesURL: URL
+			if #available(macOS 13.0, *) {
+				preferencesURL = selectedApplication.dataURL.appending(path: "Library/Preferences", directoryHint: .isDirectory)
+			} else {
+				preferencesURL = selectedApplication.dataURL.appendingPathComponent("Library/Preferences")
+			}
+			NSWorkspace.shared.open(preferencesURL)
+		}
+	}
+
+	@IBAction
+	func openLocalFiles(_ sender: Any) {
+		debugLog("sender = \(sender)")
+//		if let selectedApplicationIndex {
+//			let selectedApplication = applications[selectedApplicationIndex]
+//			NSWorkspace.shared.open(selectedApplication.dataURL)
+//		}
+	}
+
+	@IBAction
+	func openGroupContainer(_ sender: Any) {
+		debugLog("sender = \(sender)")
+		if let selectedApplicationIndex,
+			let selectedGroupContainerIndex
+		{
+			let selectedApplication = applications[selectedApplicationIndex]
+			let selectedGroupContainer = selectedApplication.groupContainers[selectedGroupContainerIndex]
+			NSWorkspace.shared.open(selectedGroupContainer.containerURL)
 		}
 	}
 
