@@ -180,21 +180,23 @@ class ViewController: NSViewController {
 							menuItem.tag = index
 							menu.addItem(menuItem)
 						}
+						groupContainersPopUpButton.isEnabled = true
+						openGroupContainerButton.isEnabled = true
 					}
 					else {
 						let menuItem = NSMenuItem(title: "No Group Containers", action: nil, keyEquivalent: "")
 						menuItem.isEnabled = false
 						menu.addItem(menuItem)
+						groupContainersPopUpButton.isEnabled = false
+						openGroupContainerButton.isEnabled = false
 					}
 					groupContainersPopUpButton.menu = menu
 				}
 
 				if let selectedGroupContainerIndex {
-					groupContainersPopUpButton.isEnabled = true
 					groupContainersPopUpButton.selectItem(at: selectedGroupContainerIndex)
 				}
 				else {
-					groupContainersPopUpButton.isEnabled = false
 					groupContainersPopUpButton.selectItem(at: 0)
 				}
 				
@@ -323,10 +325,26 @@ class ViewController: NSViewController {
 	@IBAction
 	func openLocalFiles(_ sender: Any) {
 		debugLog("sender = \(sender)")
-//		if let selectedApplicationIndex {
-//			let selectedApplication = applications[selectedApplicationIndex]
-//			NSWorkspace.shared.open(selectedApplication.dataURL)
-//		}
+
+		let filesApplicationIdentifier = "com.apple.DocumentsApp"
+		if let applicationIndex = applications.firstIndex(where: { applicationInfo in
+			applicationInfo.uniqueIdentifier == filesApplicationIdentifier
+		}) {
+			let filesApplication = applications[applicationIndex]
+			let localStorageGroupContainerIdentifier = "group.com.apple.FileProvider.LocalStorage"
+			if let groupContainerIndex = filesApplication.groupContainers.firstIndex(where: { groupContainerInfo in
+				groupContainerInfo.uniqueIdentifier == localStorageGroupContainerIdentifier
+			}) {
+				let groupContainer = filesApplication.groupContainers[groupContainerIndex]
+				let localFilesURL: URL
+				if #available(macOS 13.0, *) {
+					localFilesURL = groupContainer.containerURL.appending(path: "File Provider Storage", directoryHint: .isDirectory)
+				} else {
+					localFilesURL = groupContainer.containerURL.appendingPathComponent("File Provider Storage")
+				}
+				NSWorkspace.shared.open(localFilesURL)
+			}
+		}
 	}
 
 	@IBAction
