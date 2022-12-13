@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21507"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -706,12 +707,12 @@
         <scene sceneID="hIz-AP-VOD">
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="SimBuddy" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                    <view key="view" misplaced="YES" id="m2S-Jp-Qdl" customClass="ContentView" customModule="SimBuddy" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="190"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="D2H-WL-agj">
-                                <rect key="frame" x="17" y="226" width="447" height="25"/>
+                                <rect key="frame" x="17" y="154" width="447" height="25"/>
                                 <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="11f-SI-DOm" id="CXf-O9-aNK">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
@@ -725,7 +726,7 @@
                                 </popUpButtonCell>
                             </popUpButton>
                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HFd-J7-wSq">
-                                <rect key="frame" x="17" y="196" width="447" height="25"/>
+                                <rect key="frame" x="17" y="124" width="447" height="25"/>
                                 <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="44T-9H-5mz" id="v8a-td-jB4">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
@@ -739,7 +740,7 @@
                                 </popUpButtonCell>
                             </popUpButton>
                             <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d0J-AC-6lf">
-                                <rect key="frame" x="20" y="152" width="440" height="40"/>
+                                <rect key="frame" x="20" y="80" width="440" height="40"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sdW-ds-cig">
                                         <rect key="frame" x="-2" y="24" width="85" height="16"/>
@@ -767,35 +768,80 @@
                                     <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
                             </stackView>
-                            <stackView distribution="equalSpacing" orientation="horizontal" alignment="top" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JxL-hI-f8S">
-                                <rect key="frame" x="20" y="20" width="440" height="20"/>
+                            <stackView distribution="equalCentering" orientation="horizontal" alignment="bottom" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JxL-hI-f8S">
+                                <rect key="frame" x="20" y="20" width="440" height="40"/>
                                 <subviews>
-                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zje-qd-YkE">
-                                        <rect key="frame" x="-7" y="-7" width="113" height="32"/>
-                                        <buttonCell key="cell" type="push" title="Open Bundle" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cGp-wO-tUL">
+                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="zje-qd-YkE">
+                                        <rect key="frame" x="0.0" y="0.0" width="65" height="44"/>
+                                        <buttonCell key="cell" type="bevel" title="App Bundle" bezelStyle="rounded" image="app.dashed" catalog="system" imagePosition="above" alignment="center" controlSize="small" inset="2" id="cGp-wO-tUL">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
+                                            <font key="font" metaFont="smallSystem"/>
                                         </buttonCell>
+                                        <color key="contentTintColor" name="AccentColor"/>
+                                        <symbolConfiguration key="symbolConfiguration" configurationType="pointSize" pointSize="24" scale="medium" weight="regular"/>
                                         <connections>
                                             <action selector="openBundle:" target="XfG-lQ-9wD" id="Xoj-ue-Z3X"/>
                                         </connections>
                                     </button>
-                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yc0-Xg-Uvb">
-                                        <rect key="frame" x="348" y="-7" width="99" height="32"/>
-                                        <buttonCell key="cell" type="push" title="Open Data" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="I9Y-gf-DFK">
+                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="yc0-Xg-Uvb">
+                                        <rect key="frame" x="100" y="0.0" width="53" height="44"/>
+                                        <buttonCell key="cell" type="bevel" title="App Data" bezelStyle="rounded" image="externaldrive" catalog="system" imagePosition="above" alignment="center" controlSize="small" inset="2" id="I9Y-gf-DFK">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
+                                            <font key="font" metaFont="smallSystem"/>
                                         </buttonCell>
+                                        <color key="contentTintColor" name="AccentColor"/>
+                                        <symbolConfiguration key="symbolConfiguration" configurationType="pointSize" pointSize="24" scale="medium" weight="regular"/>
                                         <connections>
                                             <action selector="openData:" target="XfG-lQ-9wD" id="H4W-1y-INQ"/>
                                         </connections>
                                     </button>
+                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="Cdx-iJ-K7W">
+                                        <rect key="frame" x="189" y="0.0" width="64" height="44"/>
+                                        <buttonCell key="cell" type="bevel" title="Documents" bezelStyle="rounded" image="folder" catalog="system" imagePosition="above" alignment="center" controlSize="small" inset="2" id="Y7H-2r-Obz">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="smallSystem"/>
+                                        </buttonCell>
+                                        <color key="contentTintColor" name="AccentColor"/>
+                                        <symbolConfiguration key="symbolConfiguration" configurationType="pointSize" pointSize="24" scale="medium" weight="regular"/>
+                                    </button>
+                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="eKw-Yp-B9Q">
+                                        <rect key="frame" x="282" y="0.0" width="67" height="44"/>
+                                        <buttonCell key="cell" type="bevel" title="Preferences" bezelStyle="rounded" image="folder.badge.gearshape" catalog="system" imagePosition="above" alignment="center" controlSize="small" inset="2" id="9cO-Kj-bsH">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="smallSystem"/>
+                                        </buttonCell>
+                                        <color key="contentTintColor" name="AccentColor"/>
+                                        <symbolConfiguration key="symbolConfiguration" configurationType="pointSize" pointSize="24" scale="medium" weight="regular"/>
+                                    </button>
+                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="0la-pe-84p">
+                                        <rect key="frame" x="380" y="0.0" width="60" height="44"/>
+                                        <buttonCell key="cell" type="bevel" title="Local Files" bezelStyle="rounded" image="folder.fill" catalog="system" imagePosition="above" alignment="center" controlSize="small" inset="2" id="8jh-Th-DXC">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="smallSystem"/>
+                                        </buttonCell>
+                                        <color key="contentTintColor" name="AccentColor"/>
+                                        <symbolConfiguration key="symbolConfiguration" configurationType="pointSize" pointSize="24" scale="medium" weight="regular"/>
+                                    </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" secondItem="zje-qd-YkE" secondAttribute="height" id="1lE-YR-ad2"/>
+                                    <constraint firstItem="Cdx-iJ-K7W" firstAttribute="height" secondItem="JxL-hI-f8S" secondAttribute="height" id="QbW-vf-dhn"/>
+                                    <constraint firstItem="yc0-Xg-Uvb" firstAttribute="height" secondItem="JxL-hI-f8S" secondAttribute="height" id="eSN-YJ-gCk"/>
+                                    <constraint firstItem="eKw-Yp-B9Q" firstAttribute="height" secondItem="JxL-hI-f8S" secondAttribute="height" id="jbI-nw-UYX"/>
+                                    <constraint firstAttribute="height" constant="40" id="qS9-2n-qSl"/>
+                                    <constraint firstItem="0la-pe-84p" firstAttribute="height" secondItem="JxL-hI-f8S" secondAttribute="height" id="v0n-tG-kVr"/>
+                                </constraints>
                                 <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
                                     <integer value="1000"/>
                                     <integer value="1000"/>
                                 </visibilityPriorities>
                                 <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
@@ -804,6 +850,7 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="d0J-AC-6lf" secondAttribute="trailing" constant="20" symbolic="YES" id="0Ma-0p-B1b"/>
                             <constraint firstItem="d0J-AC-6lf" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="2Rq-Bh-Vr4"/>
+                            <constraint firstItem="JxL-hI-f8S" firstAttribute="top" secondItem="d0J-AC-6lf" secondAttribute="bottom" constant="20" id="42F-sb-3Nz"/>
                             <constraint firstAttribute="trailing" secondItem="D2H-WL-agj" secondAttribute="trailing" constant="20" symbolic="YES" id="63F-O3-UOc"/>
                             <constraint firstAttribute="trailing" secondItem="JxL-hI-f8S" secondAttribute="trailing" constant="20" symbolic="YES" id="HD9-Fw-u41"/>
                             <constraint firstAttribute="bottom" secondItem="JxL-hI-f8S" secondAttribute="bottom" constant="20" symbolic="YES" id="No9-1d-xGr"/>
@@ -827,7 +874,17 @@
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="655"/>
+            <point key="canvasLocation" x="75" y="636"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="app.dashed" catalog="system" width="15" height="14"/>
+        <image name="externaldrive" catalog="system" width="18" height="13"/>
+        <image name="folder" catalog="system" width="18" height="14"/>
+        <image name="folder.badge.gearshape" catalog="system" width="19" height="14"/>
+        <image name="folder.fill" catalog="system" width="18" height="14"/>
+        <namedColor name="AccentColor">
+            <color red="1" green="0.1857388616" blue="0.57339501380000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>
