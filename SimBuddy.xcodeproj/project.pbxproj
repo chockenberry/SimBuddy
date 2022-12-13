@@ -13,7 +13,7 @@
 		4421AE7C2943F07500F43940 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4421AE7A2943F07500F43940 /* Main.storyboard */; };
 		4421AE842944157400F43940 /* Simulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4421AE832944157400F43940 /* Simulator.swift */; };
 		4421AE8629441DAE00F43940 /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4421AE8529441DAE00F43940 /* Debug.swift */; };
-		443F81822947FEB200B24930 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443F81812947FEB200B24930 /* ContentView.swift */; };
+		443F81822947FEB200B24930 /* AccentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443F81812947FEB200B24930 /* AccentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +25,7 @@
 		4421AE7D2943F07500F43940 /* SimBuddy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SimBuddy.entitlements; sourceTree = "<group>"; };
 		4421AE832944157400F43940 /* Simulator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Simulator.swift; sourceTree = "<group>"; };
 		4421AE8529441DAE00F43940 /* Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
-		443F81812947FEB200B24930 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		443F81812947FEB200B24930 /* AccentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +60,7 @@
 			children = (
 				4421AE742943F07400F43940 /* AppDelegate.swift */,
 				4421AE762943F07400F43940 /* ViewController.swift */,
-				443F81812947FEB200B24930 /* ContentView.swift */,
+				443F81812947FEB200B24930 /* AccentView.swift */,
 				4421AE832944157400F43940 /* Simulator.swift */,
 				4421AE8529441DAE00F43940 /* Debug.swift */,
 				4421AE782943F07500F43940 /* Assets.xcassets */,
@@ -141,7 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4421AE772943F07400F43940 /* ViewController.swift in Sources */,
-				443F81822947FEB200B24930 /* ContentView.swift in Sources */,
+				443F81822947FEB200B24930 /* AccentView.swift in Sources */,
 				4421AE8629441DAE00F43940 /* Debug.swift in Sources */,
 				4421AE752943F07400F43940 /* AppDelegate.swift in Sources */,
 				4421AE842944157400F43940 /* Simulator.swift in Sources */,

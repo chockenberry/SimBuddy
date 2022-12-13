@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  AccentView.swift
 //  SimBuddy
 //
 //  Created by Craig Hockenberry on 12/12/22.
@@ -7,7 +7,7 @@
 
 import Cocoa
 
-class ContentView: NSView {
+class AccentView: NSView {
 	
 	override func draw(_ dirtyRect: CGRect) {
 		if let accentColor = NSColor(named: "AccentColor") {

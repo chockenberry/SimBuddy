@@ -11,6 +11,8 @@ class ViewController: NSViewController {
 
 	@IBOutlet var devicePopUpButton: NSPopUpButton!
 	@IBOutlet var applicationPopUpButton: NSPopUpButton!
+	@IBOutlet var groupContainersPopUpButton: NSPopUpButton!
+	@IBOutlet var openGroupContainerButton: NSButton!
 
 	@IBOutlet var bundleNameTextField: NSTextField!
 	@IBOutlet var bundleIdentifierTextField: NSTextField!
