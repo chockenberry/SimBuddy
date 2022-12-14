@@ -14,15 +14,15 @@ class ViewController: NSViewController {
 	@IBOutlet var groupContainersPopUpButton: NSPopUpButton!
 	@IBOutlet var openGroupContainerButton: NSButton!
 
+	@IBOutlet var deviceUDIDTextField: NSTextField!
 	@IBOutlet var bundleNameTextField: NSTextField!
 	@IBOutlet var bundleIdentifierTextField: NSTextField!
 
 	@IBOutlet var openBundleButton: NSButton!
 	@IBOutlet var openDataButton: NSButton!
-
-	var selectedDeviceIndex: Int?
-	var selectedApplicationIndex: Int?
-	var selectedGroupContainerIndex: Int?
+	@IBOutlet var openDocumentsButton: NSButton!
+	@IBOutlet var openPreferencesButton: NSButton!
+	@IBOutlet var openLocalFilesButton: NSButton!
 
 	let selectedDeviceIdentifierKey = "selectedDeviceIdentifier"
 	let selectedApplicationIdentifierKey = "selectedApplicationIdentifier"
@@ -45,6 +45,8 @@ class ViewController: NSViewController {
 		}
 	}
 
+	// MARK: -
+
 	func loadDevices() {
 		Task {
 			devices = await Simulator.devices().filter({deviceInfo in
@@ -52,42 +54,39 @@ class ViewController: NSViewController {
 			}).sorted(by: { firstDevice, secondDevice in
 				firstDevice.name < secondDevice.name
 			})
-			
-			if devices.count > 0 {
-				selectedDeviceIndex = 0
 
-				if let selectedDeviceIdentifier = UserDefaults.standard.string(forKey: selectedDeviceIdentifierKey) {
-					if let deviceIndex = devices.firstIndex(where: { deviceInfo in
-						deviceInfo.uniqueIdentifier == selectedDeviceIdentifier
-					}) {
-						selectedDeviceIndex = deviceIndex
-					}
-				}
-					
-				loadApplications()
-			}
-			else {
-				selectedDeviceIndex = nil
-			}
+			loadApplications()
+
+//			if devices.count > 0 {
+//				selectedDeviceIndex = 0
+//
+//				if let selectedDeviceIdentifier = UserDefaults.standard.string(forKey: selectedDeviceIdentifierKey) {
+//					if let deviceIndex = devices.firstIndex(where: { deviceInfo in
+//						deviceInfo.uniqueIdentifier == selectedDeviceIdentifier
+//					}) {
+//						selectedDeviceIndex = deviceIndex
+//					}
+//				}
+//
+//				loadApplications()
+//			}
+//			else {
+//				selectedDeviceIndex = nil
+//			}
 			
 			updateView()
 		}
 	}
 
 	func loadApplications() {
-		if devices.count > 0 {
+		if haveDevices {
 			Task {
-				let deviceIdentifier: String
-				if let selectedDeviceIndex {
-					deviceIdentifier = devices[selectedDeviceIndex].uniqueIdentifier
-				}
-				else {
-					deviceIdentifier = devices.first!.uniqueIdentifier
-				}
+				let deviceIdentifier = devices[selectedDeviceIndex].uniqueIdentifier
 				applications = await Simulator.applications(for: deviceIdentifier).sorted(by: { firstApplication, secondApplication in
 					firstApplication.name < secondApplication.name
 				})
 				
+				/*
 				if applications.count > 0 {
 					selectedApplicationIndex = 0
 					selectedGroupContainerIndex	= 0
@@ -113,157 +112,237 @@ class ViewController: NSViewController {
 					selectedApplicationIndex = nil
 					selectedGroupContainerIndex = nil
 				}
+				*/
 				
 				updateView()
 			}
 		}
+		else {
+			applications = []
+			updateView()
+		}
 	}
+
+	// MARK: -
+	
+	var haveDevices: Bool {
+		return devices.count > 0
+	}
+	
+	var selectedDeviceIndex: Int {
+		if let selectedDeviceIdentifier = UserDefaults.standard.string(forKey: selectedDeviceIdentifierKey) {
+			if let deviceIndex = devices.firstIndex(where: { deviceInfo in
+				deviceInfo.uniqueIdentifier == selectedDeviceIdentifier
+			})
+			{
+				return deviceIndex
+			}
+		}
+		return 0
+	}
+
+	var selectedDevice: DeviceInfo {
+		return devices[selectedDeviceIndex]
+	}
+
+	// MARK: -
+
+	var haveApplications: Bool {
+		return applications.count > 0
+	}
+	
+	var selectedApplicationIndex: Int {
+		if let selectedApplicationIdentifier = UserDefaults.standard.string(forKey: selectedApplicationIdentifierKey) {
+			if let applicationIndex = applications.firstIndex(where: { applicationInfo in
+				applicationInfo.uniqueIdentifier == selectedApplicationIdentifier
+			}) {
+				return applicationIndex
+			}
+		}
+		return 0
+	}
+
+	var selectedApplication: ApplicationInfo {
+		return applications[selectedApplicationIndex]
+	}
+
+	// MARK: -
+
+	var haveGroupContainers: Bool {
+		if haveApplications {
+			return selectedApplication.groupContainers.count > 0
+		}
+		return false
+	}
+
+	var selectedGroupContainerIndex: Int {
+		if let selectedGroupContainerIdentifier = UserDefaults.standard.string(forKey: selectedGroupContainerIdentifierKey) {
+			if let groupContainerIndex = selectedApplication.groupContainers.firstIndex(where: { groupContainerInfo in
+				groupContainerInfo.uniqueIdentifier == selectedGroupContainerIdentifier
+			}) {
+				return groupContainerIndex
+			}
+		}
+		return 0
+	}
+	
+	var selectedGroupContainer: GroupContainerInfo {
+		return selectedApplication.groupContainers[selectedGroupContainerIndex]
+	}
+	
+	// MARK: -
 
 	func updateView() {
 		debugLog()
 
+		// update devices popup and menu
 		do {
 			let menu = NSMenu(title: "Devices")
-			if devices.count == 0 {
-				let menuItem = NSMenuItem(title: "No Devices", action: nil, keyEquivalent: "")
-				menuItem.isEnabled = false
-				menu.addItem(menuItem)
-			}
-			else {
+			if haveDevices {
 				for (index, device) in devices.enumerated() {
 					let menuItem = NSMenuItem(title: device.name, action: #selector(selectDevice), keyEquivalent: "")
 					menuItem.tag = index
 					menu.addItem(menuItem)
 				}
-			}
-			
-			devicePopUpButton.menu = menu
-			if let selectedDeviceIndex {
+				
+				devicePopUpButton.menu = menu
 				devicePopUpButton.isEnabled = true
 				devicePopUpButton.selectItem(at: selectedDeviceIndex)
 			}
 			else {
+				let menuItem = NSMenuItem(title: "No Devices", action: nil, keyEquivalent: "")
+				menuItem.isEnabled = false
+				menu.addItem(menuItem)
+
+				devicePopUpButton.menu = menu
 				devicePopUpButton.isEnabled = false
 				devicePopUpButton.selectItem(at: 0)
 			}
 		}
 		
+		// update applications popup and menu
 		do {
 			let menu = NSMenu(title: "Applications")
-			if applications.count == 0 {
-				let menuItem = NSMenuItem(title: "No Applications", action: nil, keyEquivalent: "")
-				menuItem.isEnabled = false
-				menu.addItem(menuItem)
-			}
-			else {
+			if haveApplications {
 				for (index, application) in applications.enumerated() {
 					let menuItem = NSMenuItem(title: application.name, action: #selector(selectApplication), keyEquivalent: "")
 					menuItem.tag = index
 					menu.addItem(menuItem)
 				}
-			}
-			applicationPopUpButton.menu = menu
-			
-			if let selectedApplicationIndex {
+				
+				applicationPopUpButton.menu = menu
 				applicationPopUpButton.isEnabled = true
 				applicationPopUpButton.selectItem(at: selectedApplicationIndex)
-
-				let selectedApplication = applications[selectedApplicationIndex]
-				bundleNameTextField.stringValue = selectedApplication.bundleName
-				bundleIdentifierTextField.stringValue = selectedApplication.bundleIdentifier
-
-				do {
-					let menu = NSMenu(title: "GroupContainers")
-					if selectedApplication.groupContainers.count > 0 {
-						for (index, groupContainer) in selectedApplication.groupContainers.enumerated() {
-							let menuItem = NSMenuItem(title: groupContainer.identifier, action: #selector(selectGroupContainer), keyEquivalent: "")
-							menuItem.tag = index
-							menu.addItem(menuItem)
-						}
-						groupContainersPopUpButton.isEnabled = true
-						openGroupContainerButton.isEnabled = true
-					}
-					else {
-						let menuItem = NSMenuItem(title: "No Group Containers", action: nil, keyEquivalent: "")
-						menuItem.isEnabled = false
-						menu.addItem(menuItem)
-						groupContainersPopUpButton.isEnabled = false
-						openGroupContainerButton.isEnabled = false
-					}
-					groupContainersPopUpButton.menu = menu
-				}
-
-				if let selectedGroupContainerIndex {
-					groupContainersPopUpButton.selectItem(at: selectedGroupContainerIndex)
-				}
-				else {
-					groupContainersPopUpButton.selectItem(at: 0)
-				}
-				
-				openBundleButton.isEnabled = true
-				openDataButton.isEnabled = true
 			}
 			else {
+				let menuItem = NSMenuItem(title: "No Applications", action: nil, keyEquivalent: "")
+				menuItem.isEnabled = false
+				menu.addItem(menuItem)
+				
+				applicationPopUpButton.menu = menu
 				applicationPopUpButton.isEnabled = false
 				applicationPopUpButton.selectItem(at: 0)
-
+			}
+		}
+		
+		// update information and controls
+		do {
+			if haveDevices {
+				deviceUDIDTextField.stringValue = selectedDevice.uniqueIdentifier
+			}
+			else {
+				deviceUDIDTextField.stringValue = "No Device"
+			}
+			
+			if haveApplications {
+				bundleNameTextField.stringValue = selectedApplication.bundleName
+				bundleIdentifierTextField.stringValue = selectedApplication.bundleIdentifier
+			}
+			else {
 				bundleNameTextField.stringValue = "No Application"
-				bundleIdentifierTextField.stringValue = "No Application"
-
-				do {
-					let menu = NSMenu(title: "GroupContainers")
+				bundleIdentifierTextField.stringValue = ""
+			}
+			
+			let isEnabled = haveApplications
+			openBundleButton.isEnabled = isEnabled
+			openDataButton.isEnabled = isEnabled
+			openDocumentsButton.isEnabled = isEnabled
+			openPreferencesButton.isEnabled = isEnabled
+			openLocalFilesButton.isEnabled = isEnabled
+		}
+		
+		// update group containers popup and menu
+		do {
+			if haveApplications {
+				let menu = NSMenu(title: "GroupContainers")
+				if haveGroupContainers {
+					for (index, groupContainer) in selectedApplication.groupContainers.enumerated() {
+						let menuItem = NSMenuItem(title: groupContainer.identifier, action: #selector(selectGroupContainer), keyEquivalent: "")
+						menuItem.tag = index
+						menu.addItem(menuItem)
+					}
+					groupContainersPopUpButton.menu = menu
+					groupContainersPopUpButton.isEnabled = true
+					groupContainersPopUpButton.selectItem(at: selectedGroupContainerIndex)
+					openGroupContainerButton.isEnabled = true
+				}
+				else {
 					let menuItem = NSMenuItem(title: "No Group Containers", action: nil, keyEquivalent: "")
 					menuItem.isEnabled = false
 					menu.addItem(menuItem)
 					groupContainersPopUpButton.menu = menu
+					groupContainersPopUpButton.isEnabled = false
+					groupContainersPopUpButton.selectItem(at: 0)
+					openGroupContainerButton.isEnabled = false
 				}
-
+			}
+			else {
+				groupContainersPopUpButton.menu = nil
 				groupContainersPopUpButton.isEnabled = false
-				groupContainersPopUpButton.selectItem(at: 0)
-
-				openBundleButton.isEnabled = false
-				openDataButton.isEnabled = false
+				openGroupContainerButton.isEnabled = false
 			}
 		}
 	}
 	
+	// MARK: -
+
 	@objc
 	func selectDevice(_ sender: Any) {
 		debugLog("sender = \(sender)")
-		if let menuItem = sender as? NSMenuItem {
-			let index = menuItem.tag
-			let device = devices[index]
-			debugLog("index = \(index), udid = \(device.udid)")
-			UserDefaults.standard.set(device.uniqueIdentifier, forKey: selectedDeviceIdentifierKey)
-			selectedDeviceIndex = index
-			loadApplications()
+		if haveDevices {
+			if let menuItem = sender as? NSMenuItem {
+				let index = menuItem.tag
+				let device = devices[index]
+				debugLog("index = \(index), udid = \(device.udid)")
+				UserDefaults.standard.set(device.uniqueIdentifier, forKey: selectedDeviceIdentifierKey)
+				loadApplications()
+			}
 		}
 	}
 
 	@objc
 	func selectApplication(_ sender: Any) {
 		debugLog("sender = \(sender)")
-		if let menuItem = sender as? NSMenuItem {
-			let index = menuItem.tag
-			let application = applications[index]
-			debugLog("index = \(index), type = \(application.type)")
-			UserDefaults.standard.set(application.uniqueIdentifier, forKey: selectedApplicationIdentifierKey)
-			selectedApplicationIndex = index
-			updateView()
+		if haveApplications {
+			if let menuItem = sender as? NSMenuItem {
+				let index = menuItem.tag
+				let application = applications[index]
+				debugLog("index = \(index), type = \(application.type)")
+				UserDefaults.standard.set(application.uniqueIdentifier, forKey: selectedApplicationIdentifierKey)
+				updateView()
+			}
 		}
 	}
 
 	@IBAction
 	func selectGroupContainer(_ sender: Any) {
 		debugLog("sender = \(sender)")
-		if let menuItem = sender as? NSMenuItem {
-			let index = menuItem.tag
-			if let selectedApplicationIndex {
-				let selectedApplication = applications[selectedApplicationIndex]
+		if haveApplications {
+			if let menuItem = sender as? NSMenuItem {
+				let index = menuItem.tag
 				let groupContainer = selectedApplication.groupContainers[index]
 				debugLog("index = \(index), containerURL = \(groupContainer.containerURL)")
 				UserDefaults.standard.set(groupContainer.uniqueIdentifier, forKey: selectedGroupContainerIdentifierKey)
-				selectedGroupContainerIndex = index
 			}
 		}
 	}
@@ -271,8 +350,7 @@ class ViewController: NSViewController {
 	@IBAction
 	func openBundle(_ sender: Any) {
 		debugLog("sender = \(sender)")
-		if let selectedApplicationIndex {
-			let selectedApplication = applications[selectedApplicationIndex]
+		if haveApplications {
 			let selectedURL: URL
 			if #available(macOS 13.0, *) {
 				selectedURL = selectedApplication.bundleURL.appending(path: "Info.plist", directoryHint: .notDirectory)
@@ -286,17 +364,13 @@ class ViewController: NSViewController {
 	@IBAction
 	func openData(_ sender: Any) {
 		debugLog("sender = \(sender)")
-		if let selectedApplicationIndex {
-			let selectedApplication = applications[selectedApplicationIndex]
-			NSWorkspace.shared.open(selectedApplication.dataURL)
-		}
+		NSWorkspace.shared.open(selectedApplication.dataURL)
 	}
 
 	@IBAction
 	func openDocuments(_ sender: Any) {
 		debugLog("sender = \(sender)")
-		if let selectedApplicationIndex {
-			let selectedApplication = applications[selectedApplicationIndex]
+		if haveApplications {
 			let documentsURL: URL
 			if #available(macOS 13.0, *) {
 				documentsURL = selectedApplication.dataURL.appending(path: "Documents", directoryHint: .isDirectory)
@@ -310,8 +384,7 @@ class ViewController: NSViewController {
 	@IBAction
 	func openPreferences(_ sender: Any) {
 		debugLog("sender = \(sender)")
-		if let selectedApplicationIndex {
-			let selectedApplication = applications[selectedApplicationIndex]
+		if haveApplications {
 			let preferencesURL: URL
 			if #available(macOS 13.0, *) {
 				preferencesURL = selectedApplication.dataURL.appending(path: "Library/Preferences", directoryHint: .isDirectory)
@@ -350,11 +423,7 @@ class ViewController: NSViewController {
 	@IBAction
 	func openGroupContainer(_ sender: Any) {
 		debugLog("sender = \(sender)")
-		if let selectedApplicationIndex,
-			let selectedGroupContainerIndex
-		{
-			let selectedApplication = applications[selectedApplicationIndex]
-			let selectedGroupContainer = selectedApplication.groupContainers[selectedGroupContainerIndex]
+		if haveApplications && haveGroupContainers {
 			NSWorkspace.shared.open(selectedGroupContainer.containerURL)
 		}
 	}
