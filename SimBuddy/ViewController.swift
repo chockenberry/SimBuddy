@@ -56,23 +56,6 @@ class ViewController: NSViewController {
 			})
 
 			loadApplications()
-
-//			if devices.count > 0 {
-//				selectedDeviceIndex = 0
-//
-//				if let selectedDeviceIdentifier = UserDefaults.standard.string(forKey: selectedDeviceIdentifierKey) {
-//					if let deviceIndex = devices.firstIndex(where: { deviceInfo in
-//						deviceInfo.uniqueIdentifier == selectedDeviceIdentifier
-//					}) {
-//						selectedDeviceIndex = deviceIndex
-//					}
-//				}
-//
-//				loadApplications()
-//			}
-//			else {
-//				selectedDeviceIndex = nil
-//			}
 			
 			updateView()
 		}
@@ -85,35 +68,6 @@ class ViewController: NSViewController {
 				applications = await Simulator.applications(for: deviceIdentifier).sorted(by: { firstApplication, secondApplication in
 					firstApplication.name < secondApplication.name
 				})
-				
-				/*
-				if applications.count > 0 {
-					selectedApplicationIndex = 0
-					selectedGroupContainerIndex	= 0
-					
-					if let selectedApplicationIdentifier = UserDefaults.standard.string(forKey: selectedApplicationIdentifierKey) {
-						if let applicationIndex = applications.firstIndex(where: { applicationInfo in
-							applicationInfo.uniqueIdentifier == selectedApplicationIdentifier
-						}) {
-							selectedApplicationIndex = applicationIndex
-						}
-						
-						if let selectedGroupContainerIdentifier = UserDefaults.standard.string(forKey: selectedGroupContainerIdentifierKey) {
-							let application = applications[selectedApplicationIndex!]
-							if let groupContainerIndex = application.groupContainers.firstIndex(where: { groupContainerInfo in
-								groupContainerInfo.uniqueIdentifier == selectedGroupContainerIdentifier
-							}) {
-								selectedGroupContainerIndex = groupContainerIndex
-							}
-						}
-					}
-				}
-				else {
-					selectedApplicationIndex = nil
-					selectedGroupContainerIndex = nil
-				}
-				*/
-				
 				updateView()
 			}
 		}
@@ -224,15 +178,30 @@ class ViewController: NSViewController {
 		do {
 			let menu = NSMenu(title: "Applications")
 			if haveApplications {
+				// add user applications, a separator, then system applications
 				for (index, application) in applications.enumerated() {
-					let menuItem = NSMenuItem(title: application.name, action: #selector(selectApplication), keyEquivalent: "")
-					menuItem.tag = index
+					if application.type == "User" {
+						let menuItem = NSMenuItem(title: application.name, action: #selector(selectApplication), keyEquivalent: "")
+						menuItem.tag = index
+						menu.addItem(menuItem)
+					}
+				}
+				do {
+					let menuItem = NSMenuItem.separator()
+					menuItem.tag = -1
 					menu.addItem(menuItem)
 				}
-				
+				for (index, application) in applications.enumerated() {
+					if application.type != "User" {
+						let menuItem = NSMenuItem(title: application.name, action: #selector(selectApplication), keyEquivalent: "")
+						menuItem.tag = index
+						menu.addItem(menuItem)
+					}
+				}
+
 				applicationPopUpButton.menu = menu
 				applicationPopUpButton.isEnabled = true
-				applicationPopUpButton.selectItem(at: selectedApplicationIndex)
+				applicationPopUpButton.selectItem(withTag: selectedApplicationIndex)
 			}
 			else {
 				let menuItem = NSMenuItem(title: "No Applications", action: nil, keyEquivalent: "")
@@ -297,7 +266,8 @@ class ViewController: NSViewController {
 				}
 			}
 			else {
-				groupContainersPopUpButton.menu = nil
+				let menu = NSMenu(title: "GroupContainers")
+				groupContainersPopUpButton.menu = menu
 				groupContainersPopUpButton.isEnabled = false
 				openGroupContainerButton.isEnabled = false
 			}
@@ -327,7 +297,7 @@ class ViewController: NSViewController {
 			if let menuItem = sender as? NSMenuItem {
 				let index = menuItem.tag
 				let application = applications[index]
-				debugLog("index = \(index), type = \(application.type)")
+				//debugLog("index = \(index), uniqueIdentifier = \(application.uniqueIdentifier)")
 				UserDefaults.standard.set(application.uniqueIdentifier, forKey: selectedApplicationIdentifierKey)
 				updateView()
 			}
@@ -341,7 +311,7 @@ class ViewController: NSViewController {
 			if let menuItem = sender as? NSMenuItem {
 				let index = menuItem.tag
 				let groupContainer = selectedApplication.groupContainers[index]
-				debugLog("index = \(index), containerURL = \(groupContainer.containerURL)")
+				//debugLog("index = \(index), containerURL = \(groupContainer.containerURL)")
 				UserDefaults.standard.set(groupContainer.uniqueIdentifier, forKey: selectedGroupContainerIdentifierKey)
 			}
 		}

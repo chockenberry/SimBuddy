@@ -18,10 +18,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		// Insert code here to tear down your application
 	}
 
-	func applicationSupportsSecureRestorableState(_ app: NSApplication) -> Bool {
-		return true
-	}
-
 	func applicationShouldTerminateAfterLastWindowClosed(_ app: NSApplication) -> Bool {
 		return true
 	}
