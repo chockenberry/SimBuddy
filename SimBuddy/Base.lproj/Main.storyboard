@@ -880,9 +880,9 @@
                             <stackView distribution="equalCentering" orientation="horizontal" alignment="bottom" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JxL-hI-f8S">
                                 <rect key="frame" x="20" y="10" width="440" height="40"/>
                                 <subviews>
-                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="zje-qd-YkE">
+                                    <button focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="zje-qd-YkE">
                                         <rect key="frame" x="0.0" y="0.0" width="65" height="44"/>
-                                        <buttonCell key="cell" type="bevel" title="App Bundle" bezelStyle="rounded" image="app.dashed" catalog="system" imagePosition="above" alignment="center" controlSize="small" inset="2" id="cGp-wO-tUL">
+                                        <buttonCell key="cell" type="bevel" title="App Bundle" bezelStyle="rounded" image="app.dashed" catalog="system" imagePosition="above" alignment="center" controlSize="small" focusRingType="none" inset="2" id="cGp-wO-tUL">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="smallSystem"/>
                                         </buttonCell>
@@ -892,9 +892,9 @@
                                             <action selector="openBundle:" target="XfG-lQ-9wD" id="Xoj-ue-Z3X"/>
                                         </connections>
                                     </button>
-                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="yc0-Xg-Uvb">
+                                    <button focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="yc0-Xg-Uvb">
                                         <rect key="frame" x="100" y="0.0" width="53" height="44"/>
-                                        <buttonCell key="cell" type="bevel" title="App Data" bezelStyle="rounded" image="externaldrive" catalog="system" imagePosition="above" alignment="center" controlSize="small" inset="2" id="I9Y-gf-DFK">
+                                        <buttonCell key="cell" type="bevel" title="App Data" bezelStyle="rounded" image="externaldrive" catalog="system" imagePosition="above" alignment="center" controlSize="small" focusRingType="none" inset="2" id="I9Y-gf-DFK">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="smallSystem"/>
                                         </buttonCell>
@@ -904,9 +904,9 @@
                                             <action selector="openData:" target="XfG-lQ-9wD" id="H4W-1y-INQ"/>
                                         </connections>
                                     </button>
-                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="Cdx-iJ-K7W">
+                                    <button focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="Cdx-iJ-K7W">
                                         <rect key="frame" x="189" y="0.0" width="64" height="44"/>
-                                        <buttonCell key="cell" type="bevel" title="Documents" bezelStyle="rounded" image="folder" catalog="system" imagePosition="above" alignment="center" controlSize="small" inset="2" id="Y7H-2r-Obz">
+                                        <buttonCell key="cell" type="bevel" title="Documents" bezelStyle="rounded" image="folder" catalog="system" imagePosition="above" alignment="center" controlSize="small" focusRingType="none" inset="2" id="Y7H-2r-Obz">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="smallSystem"/>
                                         </buttonCell>
@@ -916,9 +916,9 @@
                                             <action selector="openDocuments:" target="XfG-lQ-9wD" id="3Uy-mc-t61"/>
                                         </connections>
                                     </button>
-                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="eKw-Yp-B9Q">
+                                    <button focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="eKw-Yp-B9Q">
                                         <rect key="frame" x="282" y="0.0" width="67" height="44"/>
-                                        <buttonCell key="cell" type="bevel" title="Preferences" bezelStyle="rounded" image="folder.badge.gearshape" catalog="system" imagePosition="above" alignment="center" controlSize="small" inset="2" id="9cO-Kj-bsH">
+                                        <buttonCell key="cell" type="bevel" title="Preferences" bezelStyle="rounded" image="folder.badge.gearshape" catalog="system" imagePosition="above" alignment="center" controlSize="small" focusRingType="none" inset="2" id="9cO-Kj-bsH">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="smallSystem"/>
                                         </buttonCell>
@@ -928,9 +928,9 @@
                                             <action selector="openPreferences:" target="XfG-lQ-9wD" id="Mus-U9-3sK"/>
                                         </connections>
                                     </button>
-                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="0la-pe-84p">
+                                    <button focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="0la-pe-84p">
                                         <rect key="frame" x="380" y="0.0" width="60" height="44"/>
-                                        <buttonCell key="cell" type="bevel" title="Local Files" bezelStyle="rounded" image="folder.fill" catalog="system" imagePosition="above" alignment="center" controlSize="small" inset="2" id="8jh-Th-DXC">
+                                        <buttonCell key="cell" type="bevel" title="Local Files" bezelStyle="rounded" image="folder.fill" catalog="system" imagePosition="above" alignment="center" controlSize="small" focusRingType="none" inset="2" id="8jh-Th-DXC">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="smallSystem"/>
                                         </buttonCell>
@@ -1007,7 +1007,7 @@
         <image name="folder.badge.gearshape" catalog="system" width="19" height="14"/>
         <image name="folder.fill" catalog="system" width="18" height="14"/>
         <namedColor name="AccentColor">
-            <color red="1" green="0.18600000441074371" blue="0.57300001382827759" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.91927868130000001" green="0.2997485399" blue="0.2274045348" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
     </resources>
 </document>

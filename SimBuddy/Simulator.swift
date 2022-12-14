@@ -12,26 +12,13 @@ import Foundation
  
  {
    "devices" : {
-	 "com.apple.CoreSimulator.SimRuntime.watchOS-8-3" : [
-	   {
-		 "availabilityError" : "runtime profile not found",
-		 "dataPath" : "\/Users\/craig\/Library\/Developer\/CoreSimulator\/Devices\/3256283C-A968-47B5-A8E9-E64A6CED1566\/data",
-		 "dataPathSize" : 0,
-		 "logPath" : "\/Users\/craig\/Library\/Logs\/CoreSimulator\/3256283C-A968-47B5-A8E9-E64A6CED1566",
-		 "udid" : "3256283C-A968-47B5-A8E9-E64A6CED1566",
-		 "isAvailable" : false,
-		 "deviceTypeIdentifier" : "com.apple.CoreSimulator.SimDeviceType.Apple-Watch-Series-5-40mm",
-		 "state" : "Shutdown",
-		 "name" : "Apple Watch Series 5 - 40mm"
-	   },
-		...
-	 ],
-	"com.apple.CoreSimulator.SimRuntime.iOS-16-1" : [
+      ...
+	  "com.apple.CoreSimulator.SimRuntime.iOS-16-1" : [
 		 {
 		   "lastBootedAt" : "2022-12-07T23:42:38Z",
-		   "dataPath" : "\/Users\/craig\/Library\/Developer\/CoreSimulator\/Devices\/573D4A53-D1EC-48CA-A554-8DF7A94EFFBD\/data",
+		   "dataPath" : "\/Users\/CHOCK\/Library\/Developer\/CoreSimulator\/Devices\/573D4A53-D1EC-48CA-A554-8DF7A94EFFBD\/data",
 		   "dataPathSize" : 4834729984,
-		   "logPath" : "\/Users\/craig\/Library\/Logs\/CoreSimulator\/573D4A53-D1EC-48CA-A554-8DF7A94EFFBD",
+		   "logPath" : "\/Users\/CHOCK\/Library\/Logs\/CoreSimulator\/573D4A53-D1EC-48CA-A554-8DF7A94EFFBD",
 		   "udid" : "573D4A53-D1EC-48CA-A554-8DF7A94EFFBD",
 		   "isAvailable" : true,
 		   "logPathSize" : 1110016,
@@ -40,15 +27,18 @@ import Foundation
 		   "name" : "iPhone 14"
 		 },
 		 {
-		   "dataPath" : "\/Users\/craig\/Library\/Developer\/CoreSimulator\/Devices\/CB23E7F5-27DA-4290-9C1E-C641F0592BAF\/data",
+		   "dataPath" : "\/Users\/CHOCK\/Library\/Developer\/CoreSimulator\/Devices\/CB23E7F5-27DA-4290-9C1E-C641F0592BAF\/data",
 		   "dataPathSize" : 13316096,
-		   "logPath" : "\/Users\/craig\/Library\/Logs\/CoreSimulator\/CB23E7F5-27DA-4290-9C1E-C641F0592BAF",
+		   "logPath" : "\/Users\/CHOCK\/Library\/Logs\/CoreSimulator\/CB23E7F5-27DA-4290-9C1E-C641F0592BAF",
 		   "udid" : "CB23E7F5-27DA-4290-9C1E-C641F0592BAF",
 		   "isAvailable" : true,
 		   "deviceTypeIdentifier" : "com.apple.CoreSimulator.SimDeviceType.iPhone-14-Plus",
 		   "state" : "Shutdown",
 		   "name" : "iPhone 14 Plus"
-		 },
+		 }
+         ...
+	   ]
+
  */
 
 struct DeviceInfo {
@@ -108,22 +98,23 @@ struct DeviceInfo {
 
  "com.iconfactory.Graphite" : {
 	"ApplicationType" : "User",
-	"Bundle" : "file:///Users/craig/Library/Developer/CoreSimulator/Devices/A42D2B4A-F65D-4E73-A1D7-3B9D20FA6FA0/data/Containers/Bundle/Application/BC037B58-1CA1-4CEA-8908-05D468DDEC0C/Linea%20Sketch.app/",
-	"BundleContainer" : "file:///Users/craig/Library/Developer/CoreSimulator/Devices/A42D2B4A-F65D-4E73-A1D7-3B9D20FA6FA0/data/Containers/Bundle/Application/BC037B58-1CA1-4CEA-8908-05D468DDEC0C/",
+	"Bundle" : "file:///Users/CHOCK/Library/Developer/CoreSimulator/Devices/A42D2B4A-F65D-4E73-A1D7-3B9D20FA6FA0/data/Containers/Bundle/Application/BC037B58-1CA1-4CEA-8908-05D468DDEC0C/Linea%20Sketch.app/",
+	"BundleContainer" : "file:///Users/CHOCK/Library/Developer/CoreSimulator/Devices/A42D2B4A-F65D-4E73-A1D7-3B9D20FA6FA0/data/Containers/Bundle/Application/BC037B58-1CA1-4CEA-8908-05D468DDEC0C/",
 	"CFBundleDisplayName" : "Linea Sketch",
 	"CFBundleExecutable" : "Linea Sketch",
 	"CFBundleIdentifier" : "com.iconfactory.Graphite",
 	"CFBundleName" : "Linea Sketch",
 	"CFBundleVersion" : "756",
-	"DataContainer" : "file:///Users/craig/Library/Developer/CoreSimulator/Devices/A42D2B4A-F65D-4E73-A1D7-3B9D20FA6FA0/data/Containers/Data/Application/713638FE-022B-444D-83A8-AF50E2F032A3/",
+	"DataContainer" : "file:///Users/CHOCK/Library/Developer/CoreSimulator/Devices/A42D2B4A-F65D-4E73-A1D7-3B9D20FA6FA0/data/Containers/Data/Application/713638FE-022B-444D-83A8-AF50E2F032A3/",
 	"GroupContainers" : {
-	   "group.com.iconfactory.Graphite" : "file:///Users/craig/Library/Developer/CoreSimulator/Devices/A42D2B4A-F65D-4E73-A1D7-3B9D20FA6FA0/data/Containers/Shared/AppGroup/DE8B3264-DCC6-488B-9DC2-EB76D8B46985/"
+	   "group.com.iconfactory.Graphite" : "file:///Users/CHOCK/Library/Developer/CoreSimulator/Devices/A42D2B4A-F65D-4E73-A1D7-3B9D20FA6FA0/data/Containers/Shared/AppGroup/DE8B3264-DCC6-488B-9DC2-EB76D8B46985/"
 	},
-	"Path" : "/Users/craig/Library/Developer/CoreSimulator/Devices/A42D2B4A-F65D-4E73-A1D7-3B9D20FA6FA0/data/Containers/Bundle/Application/BC037B58-1CA1-4CEA-8908-05D468DDEC0C/Linea Sketch.app",
+	"Path" : "/Users/CHOCK/Library/Developer/CoreSimulator/Devices/A42D2B4A-F65D-4E73-A1D7-3B9D20FA6FA0/data/Containers/Bundle/Application/BC037B58-1CA1-4CEA-8908-05D468DDEC0C/Linea Sketch.app",
 	"SBAppTags" : []
  },
 
  */
+
 struct ApplicationInfo {
 	let name: String				// CFBundleDisplayName
 	let type: String				// ApplicationType
@@ -154,19 +145,21 @@ struct GroupContainerInfo {
 
 class Simulator {
 	
+	static let simctlURL = URL(fileURLWithPath: "/Applications/Xcode.app/Contents/Developer/usr/bin/simctl")
+	static let plutilURL = URL(fileURLWithPath: "/usr/bin/plutil")
+
 	static func applications(for udid: String) async -> [ApplicationInfo] {
 		var result: [ApplicationInfo] = []
 		
 		do {
-			let executableURL = URL(fileURLWithPath: "/Applications/Xcode.app/Contents/Developer/usr/bin/simctl")
+			let executableURL = simctlURL
 			let arguments = ["listapps", udid]
 			let applicationData = try await Process.launch(executableURL: executableURL, arguments: arguments)
 			do {
-				let executableURL = URL(fileURLWithPath: "/usr/bin/plutil")
+				let executableURL = plutilURL
 				let arguments = ["-convert", "json", "-o", "-", "--", "-"] // do you like a dash of dash with your arguments?
 				let data = try await Process.launch(executableURL: executableURL, arguments: arguments, input: applicationData)
 				let object = try? JSONSerialization.jsonObject(with: data)
-				print("object = \(String(describing: object))")
 				if let root = object as? Dictionary<String, Any> {
 					for item in root {
 						if let application = item.value as? Dictionary<String, Any> {
@@ -213,24 +206,21 @@ class Simulator {
 		var result: [DeviceInfo] = []
 		
 		do {
-			let executableURL = URL(fileURLWithPath: "/Applications/Xcode.app/Contents/Developer/usr/bin/simctl")
+			let executableURL = simctlURL
 			let arguments = ["list", "devices", "-j"]
 			let data = try await Process.launch(executableURL: executableURL, arguments: arguments)
 			
 			let object = try? JSONSerialization.jsonObject(with: data)
-			//print("object = \(String(describing: object))")
 			if let root = object as? Dictionary<String, Any> {
 				if let simulators = root["devices"] as? Dictionary<String, Array<Any>> {
 					for simulator in simulators {
 						for device in simulator.value {
 							if let device = device as? Dictionary<String, Any> {
-								//print(String(describing: device))
 								if let name = device["name"] as? String,
 								   let dataPath = device["dataPath"] as? String,
 								   let state = device["state"] as? String,
 								   let udid = device["udid"] as? String
 								{
-									//print("name = \(name), state = \(state), udid = \(udid)")
 									let deviceInfo = DeviceInfo(name: name, dataPath: dataPath, isBooted: state == "Booted", udid: udid)
 									result.append(deviceInfo)
 								}
@@ -239,46 +229,22 @@ class Simulator {
 					}
 				}
 			}
-
 		}
 		catch {
 			debugLog("error: \(error.localizedDescription)")
 		}
 		
 		return result
-		/*
-		//tool.startAccessingSecurityScopedResource()
-		Process.launch(executableURL: executableURL, arguments: arguments) { error, data in
-			switch error {
-			case.success(let code):
-				debugLog("success: code = \(code)")
-				let object = try? JSONSerialization.jsonObject(with: data)
-				//print("object = \(String(describing: object))")
-				if let root = object as? Dictionary<String, Any> {
-					if let simulators = root["devices"] as? Dictionary<String, Array<Any>> {
-						for simulator in simulators {
-							for device in simulator.value {
-								if let device = device as? Dictionary<String, Any> {
-									//print(String(describing: device))
-									if let name = device["name"] as? String,
-									   let dataPath = device["dataPath"] as? String,
-									   let state = device["state"] as? String,
-									   let udid = device["udid"] as? String {
-										//print("name = \(name), state = \(state), udid = \(udid)")
-										let deviceInfo = DeviceInfo(name: name, dataPath: dataPath, isBooted: state == "Booted", udid: udid)
-										result.append(deviceInfo)
-									}
-								}
-							}
-						}
-					}
-				}
-			case .failure(let error):
-				debugLog("error: \(error.localizedDescription)")
-			}
-			
-			completion(result)
-		}
+		
+		/* This could work in a sandbox, but would require getting a security-scoped bookmark for Xcode and tolerating a bunch of console spew:
+		 
+			xcodeURL.startAccessingSecurityScopedResource()
+
+			let executableURL = simctlURL
+			let arguments = ["list", "devices", "-j"]
+			let data = try await Process.launch(executableURL: executableURL, arguments: arguments)
+
+			xcodeURL.stopAccessingSecurityScopedResource()
 		 */
 	}
 	
@@ -286,7 +252,7 @@ class Simulator {
 
 extension Process {
 	
-	/// The code below with async/await support
+	/// Quinn's code with async/await support
 	///
 	/// - Parameters:
 	///   - executableURL: The tool to run.
