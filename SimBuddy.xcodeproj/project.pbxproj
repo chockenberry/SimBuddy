@@ -26,6 +26,7 @@
 		4421AE832944157400F43940 /* Simulator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Simulator.swift; sourceTree = "<group>"; };
 		4421AE8529441DAE00F43940 /* Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
 		443F81812947FEB200B24930 /* AccentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccentView.swift; sourceTree = "<group>"; };
+		447540E4294D35FA002CA9A3 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +43,7 @@
 		4421AE682943F07400F43940 = {
 			isa = PBXGroup;
 			children = (
+				447540E4294D35FA002CA9A3 /* README.md */,
 				4421AE732943F07400F43940 /* SimBuddy */,
 				4421AE722943F07400F43940 /* Products */,
 			);
