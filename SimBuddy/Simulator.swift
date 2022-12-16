@@ -145,15 +145,15 @@ struct GroupContainerInfo {
 
 class Simulator {
 	
-	static let simctlURL = URL(fileURLWithPath: "/Applications/Xcode.app/Contents/Developer/usr/bin/simctl")
 	static let plutilURL = URL(fileURLWithPath: "/usr/bin/plutil")
+	static let xcrunURL = URL(fileURLWithPath: "/usr/bin/xcrun")
 
 	static func applications(for udid: String) async -> [ApplicationInfo] {
 		var result: [ApplicationInfo] = []
 		
 		do {
-			let executableURL = simctlURL
-			let arguments = ["listapps", udid]
+			let executableURL = xcrunURL
+			let arguments = ["simctl", "listapps", udid]
 			let applicationData = try await Process.launch(executableURL: executableURL, arguments: arguments)
 			do {
 				let executableURL = plutilURL
@@ -206,8 +206,8 @@ class Simulator {
 		var result: [DeviceInfo] = []
 		
 		do {
-			let executableURL = simctlURL
-			let arguments = ["list", "devices", "-j"]
+			let executableURL = xcrunURL
+			let arguments = ["simctl", "list", "devices", "-j"]
 			let data = try await Process.launch(executableURL: executableURL, arguments: arguments)
 			
 			let object = try? JSONSerialization.jsonObject(with: data)
