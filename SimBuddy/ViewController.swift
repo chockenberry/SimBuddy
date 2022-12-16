@@ -321,20 +321,32 @@ class ViewController: NSViewController {
 	func openBundle(_ sender: Any) {
 		debugLog("sender = \(sender)")
 		if haveApplications {
-			let selectedURL: URL
-			if #available(macOS 13.0, *) {
-				selectedURL = selectedApplication.bundleURL.appending(path: "Info.plist", directoryHint: .notDirectory)
-			} else {
-				selectedURL = selectedApplication.bundleURL.appendingPathComponent("Info.plist")
+			if NSEvent.modifierFlags == [.option] {
+				NSPasteboard.general.clearContents()
+				NSPasteboard.general.setString(selectedApplication.bundleURL.path, forType: .string)
 			}
-			NSWorkspace.shared.activateFileViewerSelecting([selectedURL])
+			else {
+				let selectedURL: URL
+				if #available(macOS 13.0, *) {
+					selectedURL = selectedApplication.bundleURL.appending(path: "Info.plist", directoryHint: .notDirectory)
+				} else {
+					selectedURL = selectedApplication.bundleURL.appendingPathComponent("Info.plist")
+				}
+				NSWorkspace.shared.activateFileViewerSelecting([selectedURL])
+			}
 		}
 	}
 
 	@IBAction
 	func openData(_ sender: Any) {
 		debugLog("sender = \(sender)")
-		NSWorkspace.shared.open(selectedApplication.dataURL)
+		if NSEvent.modifierFlags == [.option] {
+			NSPasteboard.general.clearContents()
+			NSPasteboard.general.setString(selectedApplication.dataURL.path, forType: .string)
+		}
+		else {
+			NSWorkspace.shared.open(selectedApplication.dataURL)
+		}
 	}
 
 	@IBAction
@@ -347,7 +359,13 @@ class ViewController: NSViewController {
 			} else {
 				documentsURL = selectedApplication.dataURL.appendingPathComponent("Documents")
 			}
-			NSWorkspace.shared.open(documentsURL)
+			if NSEvent.modifierFlags == [.option] {
+				NSPasteboard.general.clearContents()
+				NSPasteboard.general.setString(documentsURL.path, forType: .string)
+			}
+			else {
+				NSWorkspace.shared.open(documentsURL)
+			}
 		}
 	}
 
@@ -361,7 +379,13 @@ class ViewController: NSViewController {
 			} else {
 				preferencesURL = selectedApplication.dataURL.appendingPathComponent("Library/Preferences")
 			}
-			NSWorkspace.shared.open(preferencesURL)
+			if NSEvent.modifierFlags == [.option] {
+				NSPasteboard.general.clearContents()
+				NSPasteboard.general.setString(preferencesURL.path, forType: .string)
+			}
+			else {
+				NSWorkspace.shared.open(preferencesURL)
+			}
 		}
 	}
 
@@ -385,7 +409,13 @@ class ViewController: NSViewController {
 				} else {
 					localFilesURL = groupContainer.containerURL.appendingPathComponent("File Provider Storage")
 				}
-				NSWorkspace.shared.open(localFilesURL)
+				if NSEvent.modifierFlags == [.option] {
+					NSPasteboard.general.clearContents()
+					NSPasteboard.general.setString(localFilesURL.path, forType: .string)
+				}
+				else {
+					NSWorkspace.shared.open(localFilesURL)
+				}
 			}
 		}
 	}
@@ -394,7 +424,13 @@ class ViewController: NSViewController {
 	func openGroupContainer(_ sender: Any) {
 		debugLog("sender = \(sender)")
 		if haveApplications && haveGroupContainers {
-			NSWorkspace.shared.open(selectedGroupContainer.containerURL)
+			if NSEvent.modifierFlags == [.option] {
+				NSPasteboard.general.clearContents()
+				NSPasteboard.general.setString(selectedGroupContainer.containerURL.path, forType: .string)
+			}
+			else {
+				NSWorkspace.shared.open(selectedGroupContainer.containerURL)
+			}
 		}
 	}
 
