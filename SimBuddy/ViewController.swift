@@ -106,6 +106,7 @@ class ViewController: NSViewController {
 	}
 	
 	var selectedApplicationIndex: Int {
+		// if an application has been selected previously, use that if possible
 		if let selectedApplicationIdentifier = UserDefaults.standard.string(forKey: selectedApplicationIdentifierKey) {
 			if let applicationIndex = applications.firstIndex(where: { applicationInfo in
 				applicationInfo.uniqueIdentifier == selectedApplicationIdentifier
@@ -113,7 +114,16 @@ class ViewController: NSViewController {
 				return applicationIndex
 			}
 		}
-		return 0
+		
+		// if not, try to use the first user application, and if that fails use the first one
+		if let applicationIndex = applications.firstIndex(where: { applicationInfo in
+			applicationInfo.type == "User"
+		}) {
+			return applicationIndex
+		}
+		else {
+			return 0
+		}
 	}
 
 	var selectedApplication: ApplicationInfo {
