@@ -42,5 +42,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 			windowController.window?.makeKeyAndOrderFront(nil)
 		}
 	}
+	
+	@IBAction
+	func openIconfactory(_ sender: Any?) {
+		NSWorkspace.shared.open(URL(string: "https://iconfactory.com")!)
+	}
+
+	@IBAction
+	func openIconfactoryApps(_ sender: Any?) {
+		NSWorkspace.shared.open(URL(string: "https://iconfactoryapps.com")!)
+	}
+
+	@IBAction
+	func openGitHubProject(_ sender: Any?) {
+		NSWorkspace.shared.open(URL(string: "https://github.com/chockenberry/SimBuddy")!)
+	}
+
 }
 

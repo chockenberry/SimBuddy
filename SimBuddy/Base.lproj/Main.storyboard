@@ -96,6 +96,25 @@
                                                 <action selector="showHelpWindow:" target="Ady-hI-5gd" id="4FJ-bx-5j7"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="T68-6G-U66"/>
+                                        <menuItem title="Iconfactory Website" id="gQM-q7-NtQ">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="openIconfactory:" target="Voe-Tx-rLC" id="T6q-45-6pk"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="More Apps for Developers" id="rkh-6G-uzk">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="openIconfactoryApps:" target="Voe-Tx-rLC" id="9HD-s1-rpb"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Open GitHub Project" id="pN3-rG-RGj">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="openGitHubProject:" target="Voe-Tx-rLC" id="CSi-xu-fMx"/>
+                                            </connections>
+                                        </menuItem>
                                     </items>
                                 </menu>
                             </menuItem>
@@ -160,39 +179,39 @@
             <objects>
                 <viewController id="Pcp-Nb-8cm" sceneMemberID="viewController">
                     <view key="view" id="56e-vc-t6p">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="392"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="448"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="750" verticalStackHuggingPriority="750" horizontalHuggingPriority="750" verticalHuggingPriority="750" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E9R-j2-Vwv">
-                                <rect key="frame" x="20" y="20" width="280" height="352"/>
+                                <rect key="frame" x="20" y="60" width="280" height="368"/>
                                 <subviews>
                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="bnL-c3-XeW">
-                                        <rect key="frame" x="0.0" y="224" width="280" height="128"/>
+                                        <rect key="frame" x="0.0" y="240" width="280" height="128"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="128" id="R2f-z7-RrZ"/>
                                         </constraints>
                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="AppIcon" id="jUp-td-WhW"/>
                                     </imageView>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="g9s-ae-D0R">
-                                        <rect key="frame" x="-2" y="168" width="284" height="48"/>
-                                        <textFieldCell key="cell" allowsUndo="NO" title="To use SimBuddy, launch a device in the Simulator, or select a device that’s already running." id="ZDC-Ke-qsR">
+                                        <rect key="frame" x="-2" y="184" width="284" height="48"/>
+                                        <textFieldCell key="cell" allowsUndo="NO" title="To use SimBuddy, launch a device in the Simulator or select a device that’s already running." id="ZDC-Ke-qsR">
                                             <font key="font" usesAppearanceFont="YES"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="2MF-uT-QwT">
-                                        <rect key="frame" x="-2" y="96" width="284" height="64"/>
+                                        <rect key="frame" x="-2" y="96" width="284" height="80"/>
                                         <textFieldCell key="cell" id="9U3-ac-ra8">
                                             <font key="font" metaFont="system"/>
-                                            <string key="title">Then select an application on the device from the popup menu. The buttons at the bottom of the window will then open folders for that application in the Finder.</string>
+                                            <string key="title">Then select an application from the popup menu: your applications will be listed first. The buttons at the bottom of the window will then open folders for that application in the Finder.</string>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="u3D-LH-Upo">
                                         <rect key="frame" x="-2" y="40" width="284" height="48"/>
-                                        <textFieldCell key="cell" title="Hold down the option key while clicking a button to copy a path that you can use in the Terminal." id="xrJ-uY-u8d">
+                                        <textFieldCell key="cell" title="Hold down the Option key while clicking on any button to copy a path that you can use in the Terminal." id="xrJ-uY-u8d">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -225,18 +244,37 @@
                                     <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
                             </stackView>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tqK-gP-cKH">
+                                <rect key="frame" x="231" y="13" width="76" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="62" id="E1k-kh-QBb"/>
+                                </constraints>
+                                <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="YkC-Xb-3nn">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="performClose:" target="AsO-ZW-fLl" id="j6K-gh-760"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="E9R-j2-Vwv" secondAttribute="trailing" constant="20" symbolic="YES" id="DV9-wS-gAl"/>
                             <constraint firstItem="E9R-j2-Vwv" firstAttribute="leading" secondItem="56e-vc-t6p" secondAttribute="leading" constant="20" symbolic="YES" id="QfT-2A-Fck"/>
-                            <constraint firstAttribute="bottom" secondItem="E9R-j2-Vwv" secondAttribute="bottom" constant="20" symbolic="YES" id="Qpg-RZ-Rb2"/>
+                            <constraint firstItem="tqK-gP-cKH" firstAttribute="top" secondItem="E9R-j2-Vwv" secondAttribute="bottom" constant="20" symbolic="YES" id="Qpg-RZ-Rb2"/>
+                            <constraint firstAttribute="trailing" secondItem="tqK-gP-cKH" secondAttribute="trailing" constant="20" symbolic="YES" id="VnI-vR-VFH"/>
                             <constraint firstItem="E9R-j2-Vwv" firstAttribute="top" secondItem="56e-vc-t6p" secondAttribute="top" constant="20" symbolic="YES" id="Z9S-0c-UD1"/>
+                            <constraint firstAttribute="bottom" secondItem="tqK-gP-cKH" secondAttribute="bottom" constant="20" symbolic="YES" id="fNQ-I9-UjC"/>
+                            <constraint firstItem="tqK-gP-cKH" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="56e-vc-t6p" secondAttribute="leading" id="ydD-rB-glm"/>
                         </constraints>
                     </view>
                 </viewController>
                 <customObject id="AsO-ZW-fLl" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="693" y="767"/>
+            <point key="canvasLocation" x="693" y="795"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
@@ -554,7 +592,6 @@
                         <outlet property="applicationPopUpButton" destination="HFd-J7-wSq" id="a2y-zm-QPT"/>
                         <outlet property="bundleIdentifierTextField" destination="b6d-iS-Gej" id="1vE-oL-dGB"/>
                         <outlet property="bundleNameTextField" destination="sdW-ds-cig" id="wXp-zk-W1F"/>
-                        <outlet property="bundleUDIDTextField" destination="z7d-Xj-ys7" id="XyZ-18-oLE"/>
                         <outlet property="devicePopUpButton" destination="D2H-WL-agj" id="abT-aX-XMg"/>
                         <outlet property="deviceUDIDTextField" destination="z7d-Xj-ys7" id="oG9-Jw-mNs"/>
                         <outlet property="groupContainersPopUpButton" destination="A3V-2j-aE7" id="Gs0-90-tIL"/>
