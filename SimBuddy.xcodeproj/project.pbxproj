@@ -14,6 +14,7 @@
 		4421AE842944157400F43940 /* Simulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4421AE832944157400F43940 /* Simulator.swift */; };
 		4421AE8629441DAE00F43940 /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4421AE8529441DAE00F43940 /* Debug.swift */; };
 		443F81822947FEB200B24930 /* AccentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443F81812947FEB200B24930 /* AccentView.swift */; };
+		443F8184294FB6ED00B24930 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 443F8183294FB6ED00B24930 /* Credits.rtf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		4421AE832944157400F43940 /* Simulator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Simulator.swift; sourceTree = "<group>"; };
 		4421AE8529441DAE00F43940 /* Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
 		443F81812947FEB200B24930 /* AccentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccentView.swift; sourceTree = "<group>"; };
+		443F8183294FB6ED00B24930 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		447540E4294D35FA002CA9A3 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -67,6 +69,7 @@
 				4421AE8529441DAE00F43940 /* Debug.swift */,
 				4421AE782943F07500F43940 /* Assets.xcassets */,
 				4421AE7A2943F07500F43940 /* Main.storyboard */,
+				443F8183294FB6ED00B24930 /* Credits.rtf */,
 				4421AE7D2943F07500F43940 /* SimBuddy.entitlements */,
 			);
 			path = SimBuddy;
@@ -131,6 +134,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4421AE792943F07500F43940 /* Assets.xcassets in Resources */,
+				443F8184294FB6ED00B24930 /* Credits.rtf in Resources */,
 				4421AE7C2943F07500F43940 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -285,7 +289,7 @@
 				CODE_SIGN_ENTITLEMENTS = SimBuddy/SimBuddy.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = RYQWBTQRPT;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -313,7 +317,7 @@
 				CODE_SIGN_ENTITLEMENTS = SimBuddy/SimBuddy.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = RYQWBTQRPT;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
