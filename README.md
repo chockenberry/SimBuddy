@@ -15,7 +15,7 @@ The locations show above, and many others, are available from Xcode using the `x
 
 There are other tools available to help you navigate the _Simulator_, but they all do much more than I really need and take up space in my menu bar even though they are used infrequently. Additionally, none of these tools help find the "On My iPhone/iPad" container used by the Files app: a folder that I use whenever I’m testing import and export code.
 
-By now, you probably know where this is going: yes, I wrote my utility and call it _SimBuddy_. It’s a [FREE download](https://files.iconfactory.net/software/beta/SimBuddy.zip) on the [Iconfactory](https://iconfactory.com).
+By now, you probably know where this is going: yes, I wrote my own utility and call it _SimBuddy_. It’s a [FREE download](https://files.iconfactory.net/software/beta/SimBuddy.zip) from the [Iconfactory](https://iconfactory.com).
 
 ![Screenshot of SimBuddy window](./Screenshot.png)
 
@@ -25,4 +25,4 @@ If the _Terminal_ is more your thing, you can hold down the option key while cli
 
 It’s not a complicated app, as you can see from the [source code](https://github.com/chockenberry/SimBuddy), but it’s one that I’m very happy to have in my developer toolbox now. I hope you enjoy it, too!
 
-P.S. I love putting Easter eggs in apps. This time it’s the [icon](https://github.com/chockenberry/SimBuddy/blob/main/SimBuddy/Assets.xcassets/AppIcon.appiconset/AppIcon512x512%402x.png).
+P.S. I love putting Easter eggs in apps. This time it’s in the app [icon](https://github.com/chockenberry/SimBuddy/blob/main/SimBuddy/Assets.xcassets/AppIcon.appiconset/AppIcon512x512%402x.png).
