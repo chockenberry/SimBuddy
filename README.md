@@ -15,7 +15,7 @@ The locations show above, and many others, are available from Xcode using the `x
 
 There are other tools available to help you navigate the _Simulator_, but they all do much more than I really need and take up space in my menu bar even though they are used infrequently. Additionally, none of these tools help find the "On My iPhone/iPad" container used by the Files app: a folder that I use whenever I’m testing import and export code.
 
-By now, you probably know where this is going: yes, I wrote my own utility and call it _SimBuddy_. It’s a [FREE download](https://files.iconfactory.net/software/beta/SimBuddy.zip) from the [Iconfactory](https://iconfactory.com).
+By now, you probably know where this is going: yes, I wrote my own utility and call it _SimBuddy_. It’s a [FREE download](https://files.iconfactory.net/software/SimBuddy.zip) from the [Iconfactory](https://iconfactory.com).
 
 ![Screenshot of SimBuddy window](./Screenshot.png)
 
