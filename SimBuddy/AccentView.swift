@@ -12,7 +12,7 @@ class AccentView: NSView {
 	override func draw(_ dirtyRect: CGRect) {
 		if let accentColor = NSColor(named: "AccentColor") {
 			accentColor.withAlphaComponent(0.05).set()
-			dirtyRect.fill()
+			bounds.fill()
 		}
 	}
 }
