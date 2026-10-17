@@ -407,24 +407,75 @@ class ViewController: NSViewController {
 		if let applicationIndex = applications.firstIndex(where: { applicationInfo in
 			applicationInfo.uniqueIdentifier == filesApplicationIdentifier
 		}) {
+			// NOTE: This method worked with the original Simulator app.
+			
 			let filesApplication = applications[applicationIndex]
 			let localStorageGroupContainerIdentifier = "group.com.apple.FileProvider.LocalStorage"
 			if let groupContainerIndex = filesApplication.groupContainers.firstIndex(where: { groupContainerInfo in
 				groupContainerInfo.uniqueIdentifier == localStorageGroupContainerIdentifier
 			}) {
 				let groupContainer = filesApplication.groupContainers[groupContainerIndex]
-				let localFilesURL: URL
-				if #available(macOS 13.0, *) {
-					localFilesURL = groupContainer.containerURL.appending(path: "File Provider Storage", directoryHint: .isDirectory)
-				} else {
-					localFilesURL = groupContainer.containerURL.appendingPathComponent("File Provider Storage")
-				}
+				let localFilesURL = groupContainer.containerURL.appending(path: "File Provider Storage", directoryHint: .isDirectory)
 				if NSEvent.modifierFlags == [.option] {
 					NSPasteboard.general.clearContents()
 					NSPasteboard.general.setString(localFilesURL.path, forType: .string)
 				}
 				else {
 					NSWorkspace.shared.open(localFilesURL)
+				}
+			}
+		}
+		else {
+			// NOTE: Device Hub does things differently. Sometimes.
+			
+			let dataURL = selectedApplication.dataURL
+			//debugLog("dataURL = \(dataURL)")
+			var pathComponents = dataURL.pathComponents
+			var directoryURL: URL?
+			while !pathComponents.isEmpty {
+				let removedComponent = pathComponents.removeLast()
+				directoryURL = NSURL.fileURL(withPathComponents: pathComponents)
+				//debugLog("removedComponent = \(removedComponent), fileURL = \(fileURL)")
+				if removedComponent == "Data" {
+					break
+				}
+			}
+			if let directoryURL {
+				let appGroupsURL = directoryURL.appending(path: "Shared/AppGroup")
+				//debugLog("appGroupsURL = \(appGroupsURL)")
+				if let containers = try? FileManager.default.contentsOfDirectory(at: appGroupsURL, includingPropertiesForKeys: nil) {
+					let localStorageContainer = containers.first { container in
+						if container.lastPathComponent != ".DS_Store" {
+							let metadataURL = container.appendingPathComponent(".com.apple.mobile_container_manager.metadata.plist")
+							//debugLog("metadataURL = \(metadataURL)")
+							do {
+								let metadataData = try Data(contentsOf: metadataURL)
+								if let metadataProperties = try PropertyListSerialization.propertyList(from: metadataData, format: nil) as? [String: Any] {
+									if let metadataIdentifierProperty = metadataProperties["MCMMetadataIdentifier"] as? String {
+										//debugLog("metadataIdentifierProperty = \(metadataIdentifierProperty)")
+										let isLocalStorage = metadataIdentifierProperty == "group.com.apple.FileProvider.LocalStorage"
+										return isLocalStorage
+									}
+								}
+							}
+							catch {
+								debugLog("error = \(error)")
+							}
+						}
+						return false
+					}
+
+					if let localStorageContainer {
+						let localFilesURL = localStorageContainer.appending(path: "File Provider Storage", directoryHint: .isDirectory)
+
+						if NSEvent.modifierFlags == [.option] {
+							NSPasteboard.general.clearContents()
+							NSPasteboard.general.setString(localFilesURL.path, forType: .string)
+						}
+						else {
+							NSWorkspace.shared.open(localFilesURL)
+						}
+					}
 				}
 			}
 		}
