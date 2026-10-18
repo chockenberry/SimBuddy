@@ -64,12 +64,12 @@
           "hidden" : false,
           "image-name" : "Image 4.png",
           "name" : "Image 4",
-          "opacity" : 0.64
+          "opacity" : 1
         }
       ],
       "lighting" : "individual",
       "name" : "Vision Pro",
-      "opacity" : 1,
+      "opacity" : 0.4,
       "refractivity" : {
         "depth" : 0.1600390625,
         "enabled" : true,
