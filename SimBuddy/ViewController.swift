@@ -284,6 +284,21 @@ class ViewController: NSViewController {
 		}
 	}
 	
+	func openFilePath(at url: URL, selected: Bool = false) {
+		if NSEvent.modifierFlags == [.option] {
+			NSPasteboard.general.clearContents()
+			NSPasteboard.general.setString(url.path, forType: .string)
+		}
+		else {
+			if selected {
+				NSWorkspace.shared.activateFileViewerSelecting([url])
+			}
+			else {
+				NSWorkspace.shared.open(url)
+			}
+		}
+	}
+	
 	// MARK: -
 
 	@objc
@@ -331,31 +346,16 @@ class ViewController: NSViewController {
 	func openBundle(_ sender: Any) {
 		debugLog("sender = \(sender)")
 		if haveApplications {
-			if NSEvent.modifierFlags == [.option] {
-				NSPasteboard.general.clearContents()
-				NSPasteboard.general.setString(selectedApplication.bundleURL.path, forType: .string)
-			}
-			else {
-				let selectedURL: URL
-				if #available(macOS 13.0, *) {
-					selectedURL = selectedApplication.bundleURL.appending(path: "Info.plist", directoryHint: .notDirectory)
-				} else {
-					selectedURL = selectedApplication.bundleURL.appendingPathComponent("Info.plist")
-				}
-				NSWorkspace.shared.activateFileViewerSelecting([selectedURL])
-			}
+			let infoPlistURL = selectedApplication.bundleURL.appending(path: "Info.plist", directoryHint: .notDirectory)
+			openFilePath(at: infoPlistURL, selected: true)
 		}
 	}
 
 	@IBAction
 	func openData(_ sender: Any) {
 		debugLog("sender = \(sender)")
-		if NSEvent.modifierFlags == [.option] {
-			NSPasteboard.general.clearContents()
-			NSPasteboard.general.setString(selectedApplication.dataURL.path, forType: .string)
-		}
-		else {
-			NSWorkspace.shared.open(selectedApplication.dataURL)
+		if haveApplications {
+			openFilePath(at: selectedApplication.dataURL)
 		}
 	}
 
@@ -363,19 +363,8 @@ class ViewController: NSViewController {
 	func openDocuments(_ sender: Any) {
 		debugLog("sender = \(sender)")
 		if haveApplications {
-			let documentsURL: URL
-			if #available(macOS 13.0, *) {
-				documentsURL = selectedApplication.dataURL.appending(path: "Documents", directoryHint: .isDirectory)
-			} else {
-				documentsURL = selectedApplication.dataURL.appendingPathComponent("Documents")
-			}
-			if NSEvent.modifierFlags == [.option] {
-				NSPasteboard.general.clearContents()
-				NSPasteboard.general.setString(documentsURL.path, forType: .string)
-			}
-			else {
-				NSWorkspace.shared.open(documentsURL)
-			}
+			let documentsURL = selectedApplication.dataURL.appending(path: "Documents", directoryHint: .isDirectory)
+			openFilePath(at: documentsURL)
 		}
 	}
 
@@ -383,19 +372,8 @@ class ViewController: NSViewController {
 	func openPreferences(_ sender: Any) {
 		debugLog("sender = \(sender)")
 		if haveApplications {
-			let preferencesURL: URL
-			if #available(macOS 13.0, *) {
-				preferencesURL = selectedApplication.dataURL.appending(path: "Library/Preferences", directoryHint: .isDirectory)
-			} else {
-				preferencesURL = selectedApplication.dataURL.appendingPathComponent("Library/Preferences")
-			}
-			if NSEvent.modifierFlags == [.option] {
-				NSPasteboard.general.clearContents()
-				NSPasteboard.general.setString(preferencesURL.path, forType: .string)
-			}
-			else {
-				NSWorkspace.shared.open(preferencesURL)
-			}
+			let preferencesURL = selectedApplication.dataURL.appending(path: "Library/Preferences", directoryHint: .isDirectory)
+			openFilePath(at: preferencesURL)
 		}
 	}
 
@@ -416,13 +394,7 @@ class ViewController: NSViewController {
 			}) {
 				let groupContainer = filesApplication.groupContainers[groupContainerIndex]
 				let localFilesURL = groupContainer.containerURL.appending(path: "File Provider Storage", directoryHint: .isDirectory)
-				if NSEvent.modifierFlags == [.option] {
-					NSPasteboard.general.clearContents()
-					NSPasteboard.general.setString(localFilesURL.path, forType: .string)
-				}
-				else {
-					NSWorkspace.shared.open(localFilesURL)
-				}
+				openFilePath(at: localFilesURL)
 			}
 		}
 		else {
@@ -467,14 +439,7 @@ class ViewController: NSViewController {
 
 					if let localStorageContainer {
 						let localFilesURL = localStorageContainer.appending(path: "File Provider Storage", directoryHint: .isDirectory)
-
-						if NSEvent.modifierFlags == [.option] {
-							NSPasteboard.general.clearContents()
-							NSPasteboard.general.setString(localFilesURL.path, forType: .string)
-						}
-						else {
-							NSWorkspace.shared.open(localFilesURL)
-						}
+						openFilePath(at: localFilesURL)
 					}
 				}
 			}
