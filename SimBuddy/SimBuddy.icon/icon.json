@@ -1,0 +1,194 @@
+{
+  "features" : [
+    "refractivity",
+    "specular-location"
+  ],
+  "fill" : {
+    "solid" : "display-p3:1.00000,1.00000,1.00000,1.00000"
+  },
+  "groups" : [
+    {
+      "blur-material" : null,
+      "hidden" : false,
+      "layers" : [
+        {
+          "blend-mode" : "normal",
+          "fill" : {
+            "solid" : "display-p3:0.00000,0.35779,0.97266,1.00000"
+          },
+          "hidden" : false,
+          "image-name" : "Image 5.png",
+          "name" : "Image 5",
+          "opacity" : 0.75,
+          "position" : {
+            "scale" : 1,
+            "translation-in-points" : [
+              0,
+              5
+            ]
+          }
+        }
+      ],
+      "lighting" : "combined",
+      "name" : "iPhone",
+      "refractivity" : {
+        "depth" : 0.01765625,
+        "enabled" : true,
+        "strength" : 0.129140625
+      },
+      "shadow" : {
+        "kind" : "layer-color",
+        "opacity" : 0.5
+      },
+      "specular" : "inside",
+      "translucency" : {
+        "enabled" : true,
+        "value" : 0
+      }
+    },
+    {
+      "blend-mode" : "normal",
+      "blur-material" : null,
+      "layers" : [
+        {
+          "blend-mode" : "normal",
+          "fill" : {
+            "solid" : "display-p3:0.30817,0.23608,0.92920,1.00000"
+          },
+          "glass-specializations" : [
+            {
+              "appearance" : "light",
+              "value" : true
+            }
+          ],
+          "hidden" : false,
+          "image-name" : "Image 4.png",
+          "name" : "Image 4",
+          "opacity" : 0.64
+        }
+      ],
+      "lighting" : "individual",
+      "name" : "Vision Pro",
+      "opacity" : 1,
+      "refractivity" : {
+        "depth" : 0.1600390625,
+        "enabled" : true,
+        "strength" : -0.1353515625
+      },
+      "shadow" : {
+        "kind" : "neutral",
+        "opacity" : 0.5
+      },
+      "specular" : true,
+      "translucency" : {
+        "enabled" : true,
+        "value" : 0.4
+      }
+    },
+    {
+      "layers" : [
+        {
+          "glass" : false,
+          "image-name" : "Image 8.png",
+          "name" : "Image 8",
+          "position" : {
+            "scale" : 1,
+            "translation-in-points" : [
+              0,
+              24
+            ]
+          }
+        }
+      ],
+      "name" : "Emoji",
+      "refractivity" : {
+        "depth" : 0.0860546875,
+        "enabled" : true,
+        "strength" : 0.24
+      },
+      "shadow" : {
+        "kind" : "neutral",
+        "opacity" : 0.5
+      },
+      "translucency" : {
+        "enabled" : true,
+        "value" : 0.4
+      }
+    },
+    {
+      "layers" : [
+        {
+          "glass" : false,
+          "image-name" : "Image 11.png",
+          "name" : "Image 11",
+          "position" : {
+            "scale" : 1,
+            "translation-in-points" : [
+              4,
+              -56
+            ]
+          }
+        },
+        {
+          "blend-mode" : "normal",
+          "fill" : {
+            "solid" : "display-p3:0.41874,0.78609,0.95312,1.00000"
+          },
+          "hidden" : false,
+          "image-name" : "Image 6.png",
+          "name" : "Image 6",
+          "opacity" : 0.81
+        },
+        {
+          "glass" : false,
+          "image-name" : "Image 10.png",
+          "name" : "Image 10"
+        }
+      ],
+      "lighting" : "individual",
+      "name" : "iPad",
+      "opacity" : 1,
+      "refractivity" : {
+        "depth" : 0,
+        "enabled" : true,
+        "strength" : 0.5
+      },
+      "shadow" : {
+        "kind" : "neutral",
+        "opacity" : 0.5
+      },
+      "translucency" : {
+        "enabled" : false,
+        "value" : 0.71
+      }
+    },
+    {
+      "blur-material" : null,
+      "hidden" : true,
+      "layers" : [
+        {
+          "image-name" : "Image 7.png",
+          "name" : "Image 7"
+        }
+      ],
+      "name" : "Original",
+      "refractivity" : {
+        "depth" : 0,
+        "enabled" : false,
+        "strength" : 0.11
+      },
+      "shadow" : {
+        "kind" : "layer-color",
+        "opacity" : 0.5
+      },
+      "specular" : "inside",
+      "translucency" : {
+        "enabled" : false,
+        "value" : 0.3
+      }
+    }
+  ],
+  "supported-platforms" : {
+    "squares" : "shared"
+  }
+}

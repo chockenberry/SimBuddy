@@ -13,6 +13,7 @@
 		4421AE7C2943F07500F43940 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4421AE7A2943F07500F43940 /* Main.storyboard */; };
 		4421AE842944157400F43940 /* Simulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4421AE832944157400F43940 /* Simulator.swift */; };
 		4421AE8629441DAE00F43940 /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4421AE8529441DAE00F43940 /* Debug.swift */; };
+		442CE10F3084480F00809482 /* SimBuddy.icon in Resources */ = {isa = PBXBuildFile; fileRef = 442CE10E3084480F00809482 /* SimBuddy.icon */; };
 		443F81822947FEB200B24930 /* AccentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443F81812947FEB200B24930 /* AccentView.swift */; };
 		443F8184294FB6ED00B24930 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 443F8183294FB6ED00B24930 /* Credits.rtf */; };
 /* End PBXBuildFile section */
@@ -26,6 +27,7 @@
 		4421AE7D2943F07500F43940 /* SimBuddy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SimBuddy.entitlements; sourceTree = "<group>"; };
 		4421AE832944157400F43940 /* Simulator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Simulator.swift; sourceTree = "<group>"; };
 		4421AE8529441DAE00F43940 /* Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
+		442CE10E3084480F00809482 /* SimBuddy.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = SimBuddy.icon; sourceTree = "<group>"; };
 		443F81812947FEB200B24930 /* AccentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccentView.swift; sourceTree = "<group>"; };
 		443F8183294FB6ED00B24930 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		447540E4294D35FA002CA9A3 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 				4421AE8529441DAE00F43940 /* Debug.swift */,
 				4421AE782943F07500F43940 /* Assets.xcassets */,
 				4421AE7A2943F07500F43940 /* Main.storyboard */,
+				442CE10E3084480F00809482 /* SimBuddy.icon */,
 				443F8183294FB6ED00B24930 /* Credits.rtf */,
 				4421AE7D2943F07500F43940 /* SimBuddy.entitlements */,
 			);
@@ -103,7 +106,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1410;
-				LastUpgradeCheck = 1410;
+				LastUpgradeCheck = 2710;
 				TargetAttributes = {
 					4421AE702943F07400F43940 = {
 						CreatedOnToolsVersion = 14.1;
@@ -133,6 +136,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				442CE10F3084480F00809482 /* SimBuddy.icon in Resources */,
 				4421AE792943F07500F43940 /* Assets.xcassets in Resources */,
 				443F8184294FB6ED00B24930 /* Credits.rtf in Resources */,
 				4421AE7C2943F07500F43940 /* Main.storyboard in Resources */,
@@ -201,9 +205,12 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = RYQWBTQRPT;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -223,6 +230,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -261,9 +269,12 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = RYQWBTQRPT;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -276,6 +287,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
@@ -284,13 +296,13 @@
 		4421AE812943F07500F43940 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = SimBuddy;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = SimBuddy/SimBuddy.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = RYQWBTQRPT;
+				DEAD_CODE_STRIPPING = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
@@ -313,13 +325,13 @@
 		4421AE822943F07500F43940 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = SimBuddy;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = SimBuddy/SimBuddy.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = RYQWBTQRPT;
+				DEAD_CODE_STRIPPING = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
