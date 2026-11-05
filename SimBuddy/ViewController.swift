@@ -230,7 +230,7 @@ class ViewController: NSViewController {
 				deviceUDIDTextField.stringValue = selectedDevice.uniqueIdentifier
 			}
 			else {
-				deviceUDIDTextField.stringValue = "No Device – Start one in the Simulator"
+				deviceUDIDTextField.stringValue = "No Device – Start a Simulator in Device Hub"
 			}
 			
 			if haveApplications {

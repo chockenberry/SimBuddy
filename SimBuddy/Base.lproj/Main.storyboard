@@ -496,7 +496,7 @@ DQ
                                 <rect key="frame" x="20" y="10" width="440" height="40"/>
                                 <subviews>
                                     <button focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="zje-qd-YkE">
-                                        <rect key="frame" x="0.0" y="0.0" width="65" height="44"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="65" height="44.5"/>
                                         <buttonCell key="cell" type="bevel" title="App Bundle" bezelStyle="rounded" image="app.dashed" catalog="system" imagePosition="above" alignment="center" controlSize="small" focusRingType="none" inset="2" id="cGp-wO-tUL">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="smallSystem"/>
@@ -510,7 +510,7 @@ DQ
                                         </connections>
                                     </button>
                                     <button focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="yc0-Xg-Uvb">
-                                        <rect key="frame" x="98" y="0.0" width="53" height="44"/>
+                                        <rect key="frame" x="98" y="0.0" width="53" height="44.5"/>
                                         <buttonCell key="cell" type="bevel" title="App Data" bezelStyle="rounded" image="externaldrive" catalog="system" imagePosition="above" alignment="center" controlSize="small" focusRingType="none" inset="2" id="I9Y-gf-DFK">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="smallSystem"/>
@@ -524,7 +524,7 @@ DQ
                                         </connections>
                                     </button>
                                     <button focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="Cdx-iJ-K7W">
-                                        <rect key="frame" x="185" y="0.0" width="64" height="44.5"/>
+                                        <rect key="frame" x="185" y="0.0" width="64" height="45"/>
                                         <buttonCell key="cell" type="bevel" title="Documents" bezelStyle="rounded" image="folder" catalog="system" imagePosition="above" alignment="center" controlSize="small" focusRingType="none" inset="2" id="Y7H-2r-Obz">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="smallSystem"/>
@@ -538,7 +538,7 @@ DQ
                                         </connections>
                                     </button>
                                     <button focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="eKw-Yp-B9Q">
-                                        <rect key="frame" x="276" y="0.0" width="67" height="46.5"/>
+                                        <rect key="frame" x="276" y="0.0" width="67" height="47"/>
                                         <buttonCell key="cell" type="bevel" title="Preferences" bezelStyle="rounded" image="folder.badge.gearshape" catalog="system" imagePosition="above" alignment="center" controlSize="small" focusRingType="none" inset="2" id="9cO-Kj-bsH">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="smallSystem"/>
@@ -552,7 +552,7 @@ DQ
                                         </connections>
                                     </button>
                                     <button focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="0la-pe-84p">
-                                        <rect key="frame" x="363" y="0.0" width="77" height="44.5"/>
+                                        <rect key="frame" x="363" y="0.0" width="77" height="45"/>
                                         <buttonCell key="cell" type="bevel" title="On My Device" bezelStyle="rounded" image="folder.fill" catalog="system" imagePosition="above" alignment="center" controlSize="small" focusRingType="none" inset="2" id="8jh-Th-DXC">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="smallSystem"/>
@@ -642,7 +642,7 @@ DQ
             <color red="0.91900002956390381" green="0.30000001192092896" blue="0.22699999809265137" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="AccentColorReduced">
-            <color red="0.91900002956390381" green="0.30000001192092896" blue="0.22699999809265137" alpha="0.60000013351440429" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.91900002956390381" green="0.30000001192092896" blue="0.22699999809265137" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
     </resources>
 </document>
