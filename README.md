@@ -25,4 +25,4 @@ If the _Terminal_ is more your thing, you can hold down the option key while cli
 
 It’s not a complicated app, as you can see from the [source code](https://github.com/chockenberry/SimBuddy), but it’s one that I’m very happy to have in my developer toolbox now. I hope you enjoy it, too!
 
-P.S. I love putting Easter eggs in apps. This time it’s in the app [icon](https://github.com/chockenberry/SimBuddy/blob/main/SimBuddy/Screenshot-Icon.png).
+P.S. I love putting Easter eggs in apps. This time it’s in the app [icon](https://github.com/chockenberry/SimBuddy/blob/main/Screenshot-Icon.png).
